@@ -1,0 +1,1966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Education Services | Your Gateway to Global Education</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════
+   GLOBAL VARIABLES & RESET
+══════════════════════════════════════════ */
+:root {
+  --navy:#0a1628; --navy-mid:#0f1e38; --navy-light:#1a3060; --navy-soft:#162240;
+  --gold:#c9a84c; --gold-light:#e4c87a; --gold-pale:#f7edce; --gold-dim:#8a6f2e;
+  --cream:#faf8f2; --cream-dark:#f1ece0; --white:#ffffff;
+  --tx-dark:#0a1628; --tx-mid:#3a4a6a; --tx-light:#8899bb;
+  --green:#2a7a4f; --red:#c0392b;
+  --shadow-sm:0 2px 12px rgba(10,22,40,.08);
+  --shadow-md:0 8px 32px rgba(10,22,40,.12);
+  --shadow-lg:0 20px 60px rgba(10,22,40,.15);
+  --radius:2px;
+  --transition:0.28s cubic-bezier(0.4,0,0.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Montserrat',sans-serif;background:var(--cream);color:var(--tx-dark);overflow-x:hidden;line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+ul{list-style:none;}
+
+/* ══════════════════════════════════════════
+   TOPBAR
+══════════════════════════════════════════ */
+.topbar{
+  background:var(--navy-mid);padding:.45rem 5%;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.7rem;color:rgba(255,255,255,.55);flex-wrap:wrap;gap:.4rem;
+}
+.topbar a{color:var(--gold);transition:opacity .2s;}
+.topbar a:hover{opacity:.8;}
+.topbar-left{display:flex;gap:1.5rem;align-items:center;}
+.topbar-right{display:flex;gap:1.5rem;align-items:center;}
+.tb-sep{opacity:.3;}
+
+/* ══════════════════════════════════════════
+   MEGA NAV
+══════════════════════════════════════════ */
+.main-nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(10,22,40,.97);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(201,168,76,.18);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.85rem 5%;gap:1rem;
+}
+.nav-logo{
+  font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;
+  color:var(--white);white-space:nowrap;
+}
+.nav-logo span{color:var(--gold);}
+.nav-menu{display:flex;align-items:center;gap:0;list-style:none;}
+.nav-item{position:relative;}
+.nav-link{
+  display:flex;align-items:center;gap:.28rem;
+  padding:.65rem .95rem;
+  font-size:.71rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.72);transition:color var(--transition);white-space:nowrap;
+  cursor:pointer;
+}
+.nav-link:hover,.nav-item:hover .nav-link{color:var(--gold);}
+.nav-arrow{font-size:.5rem;transition:transform var(--transition);}
+.nav-item:hover .nav-arrow{transform:rotate(180deg);}
+
+/* Mega dropdown */
+.mega-drop{
+  position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  background:var(--white);
+  box-shadow:var(--shadow-lg);
+  border-top:3px solid var(--gold);
+  min-width:680px;
+  opacity:0;visibility:hidden;
+  transition:opacity var(--transition),transform var(--transition);
+  transform:translateX(-50%) translateY(-6px);
+  pointer-events:none;
+}
+.nav-item:hover .mega-drop{
+  opacity:1;visibility:visible;
+  transform:translateX(-50%) translateY(0);
+  pointer-events:auto;
+}
+.mega-inner{display:grid;padding:2rem;}
+.mega-2{grid-template-columns:repeat(2,1fr);gap:2rem;}
+.mega-3{grid-template-columns:repeat(3,1fr);gap:2rem;}
+.mega-4{grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.mega-col h4{
+  font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:1rem;padding-bottom:.5rem;
+  border-bottom:1px solid var(--cream-dark);
+}
+.mega-links{display:flex;flex-direction:column;gap:.1rem;}
+.mega-link{
+  display:flex;align-items:center;gap:.6rem;
+  padding:.45rem .5rem;font-size:.8rem;color:var(--tx-mid);
+  border-radius:var(--radius);transition:background var(--transition),color var(--transition);
+}
+.mega-link:hover{background:var(--cream);color:var(--navy);}
+.mega-link-icon{font-size:1rem;flex-shrink:0;width:1.4rem;text-align:center;}
+.mega-featured{
+  background:var(--navy);padding:1.5rem;
+  display:flex;flex-direction:column;gap:.8rem;
+}
+.mega-feat-label{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);}
+.mega-feat-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);line-height:1.3;}
+.mega-feat-link{
+  display:inline-flex;align-items:center;gap:.4rem;
+  font-size:.72rem;font-weight:700;color:var(--gold);
+  letter-spacing:.08em;text-transform:uppercase;margin-top:.3rem;
+}
+
+/* Nav CTA group */
+.nav-actions{display:flex;gap:.6rem;align-items:center;}
+.nav-wa{
+  display:flex;align-items:center;gap:.35rem;
+  padding:.48rem 1rem;background:#25D366;color:#fff;
+  font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  transition:background var(--transition);
+}
+.nav-wa:hover{background:#1eb855;}
+.nav-cta{
+  padding:.48rem 1.1rem;background:var(--gold);color:var(--navy);
+  font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  transition:background var(--transition);
+}
+.nav-cta:hover{background:var(--gold-light);}
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+#hero{
+  min-height:100vh;background:var(--navy);
+  display:flex;align-items:center;position:relative;overflow:hidden;
+  padding:6rem 5% 4rem;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 65% 70% at 78% 55%,rgba(201,168,76,.09) 0%,transparent 60%),
+    radial-gradient(ellipse 35% 50% at 5% 90%,rgba(26,48,96,.7) 0%,transparent 70%),
+    repeating-linear-gradient(45deg,transparent,transparent 70px,rgba(201,168,76,.018) 70px,rgba(201,168,76,.018) 71px);
+}
+.hero-globe{
+  position:absolute;right:-4%;top:50%;transform:translateY(-50%);
+  font-size:clamp(20rem,40vw,55rem);opacity:.04;
+  user-select:none;pointer-events:none;line-height:1;
+}
+.hero-content{position:relative;z-index:2;max-width:680px;animation:fadeUp .9s ease both;}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);
+  padding:.38rem 1rem;margin-bottom:2rem;
+  font-size:.66rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+}
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.5rem,4.5vw,4.8rem);font-weight:700;line-height:1.06;
+  color:var(--white);margin-bottom:1.4rem;
+}
+h1 em{color:var(--gold);font-style:normal;}
+.hero-lead{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;line-height:1.82;color:rgba(255,255,255,.66);
+  margin-bottom:2.5rem;max-width:560px;
+}
+.hero-btns{display:flex;gap:.9rem;flex-wrap:wrap;margin-bottom:3rem;}
+.btn-gold{
+  padding:.95rem 2.4rem;background:var(--gold);color:var(--navy);
+  font-size:.77rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  border:2px solid var(--gold);transition:all var(--transition);
+}
+.btn-gold:hover{background:var(--gold-light);border-color:var(--gold-light);transform:translateY(-2px);}
+.btn-outline{
+  padding:.95rem 2.4rem;background:transparent;color:var(--white);
+  font-size:.77rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  border:2px solid rgba(255,255,255,.25);transition:all var(--transition);
+}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.btn-dark{
+  padding:.95rem 2.4rem;background:var(--navy);color:var(--white);
+  font-size:.77rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  transition:all var(--transition);
+}
+.btn-dark:hover{background:var(--navy-light);transform:translateY(-2px);}
+.btn-green{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.95rem 2rem;background:#25D366;color:#fff;
+  font-size:.77rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  transition:all var(--transition);
+}
+.btn-green:hover{background:#1eb855;transform:translateY(-2px);}
+
+.hero-stats{
+  display:flex;gap:2.8rem;flex-wrap:wrap;
+  border-top:1px solid rgba(255,255,255,.1);padding-top:2rem;
+}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.1rem;font-weight:700;color:var(--gold);line-height:1;}
+.stat-label{font-size:.67rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.42);margin-top:.3rem;}
+
+/* ══════════════════════════════════════════
+   DESTINATIONS TICKER
+══════════════════════════════════════════ */
+.dest-bar{
+  background:var(--gold);padding:.85rem 5%;
+  display:flex;align-items:center;justify-content:center;gap:2.2rem;flex-wrap:wrap;
+}
+.dest-pill{
+  font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--navy);display:flex;align-items:center;gap:.45rem;
+  padding:.3rem .7rem;transition:background var(--transition);border-radius:var(--radius);
+}
+.dest-pill:hover{background:rgba(10,22,40,.1);}
+.dest-pill::before{content:'✦';font-size:.5rem;}
+
+/* ══════════════════════════════════════════
+   SECTION SHARED
+══════════════════════════════════════════ */
+section{padding:5.5rem 5%;}
+.eyebrow{
+  font-size:.68rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:.8rem;
+  display:flex;align-items:center;gap:.7rem;
+}
+.eyebrow::before{content:'';display:block;width:26px;height:1px;background:var(--gold);}
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.85rem,3vw,2.9rem);font-weight:700;line-height:1.18;
+  color:var(--navy);margin-bottom:.9rem;
+}
+h2.light{color:var(--white);}
+.sub{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--tx-mid);line-height:1.76;max-width:580px;}
+.sub.light{color:rgba(255,255,255,.6);}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1.5rem;}
+.see-all{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:.35rem;}
+.see-all::after{content:'→';}
+.see-all:hover{opacity:.75;}
+
+/* Reveal animation */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.in{opacity:1;transform:none;}
+.reveal-d1{transition-delay:.1s;}
+.reveal-d2{transition-delay:.2s;}
+.reveal-d3{transition-delay:.3s;}
+
+/* ══════════════════════════════════════════
+   WHY CHOOSE US
+══════════════════════════════════════════ */
+#why{background:var(--white);}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3rem;}
+.why-items{display:flex;flex-direction:column;gap:1.1rem;}
+.why-card{
+  display:flex;gap:1.1rem;align-items:flex-start;
+  padding:1.3rem;background:var(--cream);
+  border-left:3px solid transparent;
+  transition:border-color var(--transition),box-shadow var(--transition),background var(--transition);
+  cursor:default;
+}
+.why-card:hover{border-left-color:var(--gold);box-shadow:var(--shadow-sm);background:var(--white);}
+.why-ico{font-size:1.6rem;flex-shrink:0;margin-top:.1rem;}
+.why-h{font-size:.87rem;font-weight:700;color:var(--navy);margin-bottom:.28rem;}
+.why-p{font-size:.8rem;color:var(--tx-mid);line-height:1.62;}
+
+.stats-box{background:var(--navy);padding:2.8rem 2.5rem;position:relative;}
+.stats-box::before{content:'';position:absolute;top:-10px;left:-10px;right:10px;bottom:10px;border:2px solid var(--gold);z-index:0;}
+.stats-box-inner{position:relative;z-index:1;}
+.stats-box h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--white);margin-bottom:1.5rem;}
+.stats-4{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+.stat-box{text-align:center;padding:1.3rem 1rem;background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.2);}
+.stat-big{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--gold);line-height:1;}
+.stat-s{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.42);margin-top:.35rem;}
+.quote-box{margin-top:2rem;padding:1.4rem;background:rgba(201,168,76,.08);border-left:3px solid var(--gold);}
+.quote-box p{font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(255,255,255,.7);line-height:1.7;font-style:italic;}
+.quote-by{font-size:.7rem;color:var(--gold);font-weight:700;margin-top:.7rem;letter-spacing:.1em;text-transform:uppercase;}
+
+/* ══════════════════════════════════════════
+   COUNTRY CARDS  (interactive)
+══════════════════════════════════════════ */
+#countries{background:var(--cream);}
+.country-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem;margin-top:2.5rem;}
+.country-card{
+  background:var(--white);padding:1.8rem 1.4rem;text-align:center;
+  border-bottom:3px solid transparent;
+  box-shadow:var(--shadow-sm);
+  transition:all var(--transition);cursor:pointer;
+  position:relative;overflow:hidden;
+}
+.country-card::after{
+  content:'';position:absolute;inset:0;background:var(--navy);
+  transform:translateY(100%);transition:transform var(--transition);z-index:0;
+}
+.country-card:hover{border-bottom-color:var(--gold);transform:translateY(-4px);box-shadow:var(--shadow-md);}
+.country-card:hover::after{transform:translateY(0);}
+.country-card:hover .c-flag,.country-card:hover .c-name,.country-card:hover .c-stat,.country-card:hover .c-link{color:var(--white);position:relative;z-index:1;}
+.country-card:hover .c-link{color:var(--gold);}
+.c-flag{font-size:2.8rem;margin-bottom:.8rem;display:block;position:relative;z-index:1;transition:color var(--transition);}
+.c-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:.5rem;position:relative;z-index:1;transition:color var(--transition);}
+.c-stat{font-size:.7rem;color:var(--tx-light);margin-bottom:.9rem;position:relative;z-index:1;transition:color var(--transition);}
+.c-tags{display:flex;flex-wrap:wrap;gap:.3rem;justify-content:center;margin-bottom:.9rem;position:relative;z-index:1;}
+.c-tag{padding:.18rem .55rem;background:var(--cream);font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--tx-mid);}
+.c-link{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);position:relative;z-index:1;transition:color var(--transition);}
+
+/* Country Detail Panel */
+.country-detail{
+  display:none;margin-top:2rem;
+  background:var(--white);border-top:3px solid var(--gold);
+  box-shadow:var(--shadow-md);padding:2.5rem;
+}
+.country-detail.open{display:block;animation:fadeUp .4s ease;}
+.cd-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2.5rem;}
+.cd-section h4{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--cream-dark);}
+.cd-row{display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--cream-dark);font-size:.82rem;color:var(--tx-mid);}
+.cd-row:last-child{border-bottom:none;}
+.cd-row strong{color:var(--navy);font-weight:600;}
+.cd-uni-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.5rem;}
+.cd-uni-tag{padding:.28rem .7rem;background:var(--navy);color:var(--white);font-size:.7rem;font-weight:500;}
+.cd-bullets{display:flex;flex-direction:column;gap:.5rem;margin-top:.5rem;}
+.cd-bullet{display:flex;align-items:flex-start;gap:.5rem;font-size:.8rem;color:var(--tx-mid);}
+.cd-bullet::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;margin-top:.05rem;}
+.cd-close{
+  float:right;background:none;border:none;cursor:pointer;
+  font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--tx-light);padding:.3rem .6rem;transition:color var(--transition);
+}
+.cd-close:hover{color:var(--red);}
+
+/* ══════════════════════════════════════════
+   UNIVERSITY GROUPS
+══════════════════════════════════════════ */
+#uni-groups{background:var(--navy);}
+.ug-tabs{display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:2.5rem;flex-wrap:wrap;}
+.ug-tab{
+  padding:.7rem 1.6rem;background:none;border:none;
+  font-family:'Montserrat',sans-serif;font-size:.73rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;
+  color:rgba(255,255,255,.45);cursor:pointer;
+  border-bottom:3px solid transparent;margin-bottom:-1px;
+  transition:all var(--transition);
+}
+.ug-tab.active,.ug-tab:hover{color:var(--gold);border-bottom-color:var(--gold);}
+.ug-panels>div{display:none;}
+.ug-panels>div.active{display:block;animation:fadeUp .35s ease;}
+.ug-intro{margin-bottom:2rem;}
+.ug-intro p{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:rgba(255,255,255,.65);line-height:1.75;max-width:780px;}
+.uni-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem;}
+.uni-card{
+  background:rgba(255,255,255,.05);border:1px solid rgba(201,168,76,.15);
+  padding:1.5rem;transition:all var(--transition);cursor:pointer;
+}
+.uni-card:hover{background:rgba(201,168,76,.08);border-color:var(--gold);transform:translateY(-3px);}
+.uni-rank{font-size:.62rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
+.uni-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--white);margin-bottom:.3rem;}
+.uni-loc{font-size:.72rem;color:rgba(255,255,255,.4);margin-bottom:.7rem;}
+.uni-badges{display:flex;flex-wrap:wrap;gap:.3rem;}
+.uni-badge{padding:.18rem .55rem;background:rgba(255,255,255,.07);font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.5);}
+
+.ug-brochure-row{
+  margin-top:2.5rem;padding:1.8rem;
+  background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+}
+.ug-br-text h4{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--white);margin-bottom:.3rem;}
+.ug-br-text p{font-size:.8rem;color:rgba(255,255,255,.5);}
+.btn-dl{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.75rem 1.8rem;background:var(--gold);color:var(--navy);
+  font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  transition:all var(--transition);white-space:nowrap;
+}
+.btn-dl:hover{background:var(--gold-light);transform:translateY(-2px);}
+
+/* ══════════════════════════════════════════
+   COURSES  (tabbed)
+══════════════════════════════════════════ */
+#courses{background:var(--white);}
+.course-tabs{display:flex;gap:0;flex-wrap:wrap;border-bottom:2px solid var(--cream-dark);margin-bottom:2.5rem;}
+.course-tab{
+  padding:.65rem 1.4rem;background:none;border:none;
+  font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:600;
+  letter-spacing:.07em;text-transform:uppercase;
+  color:var(--tx-light);cursor:pointer;
+  border-bottom:3px solid transparent;margin-bottom:-2px;
+  transition:all var(--transition);
+}
+.course-tab.active,.course-tab:hover{color:var(--navy);border-bottom-color:var(--gold);}
+.course-panels>div{display:none;}
+.course-panels>div.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem;animation:fadeUp .35s ease;}
+.course-card{
+  background:var(--cream);padding:1.8rem;
+  border-bottom:3px solid transparent;
+  transition:all var(--transition);
+}
+.course-card:hover{border-bottom-color:var(--gold);transform:translateY(-3px);box-shadow:var(--shadow-md);background:var(--white);}
+.cc-ico{font-size:1.9rem;margin-bottom:.8rem;}
+.cc-name{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:.5rem;}
+.cc-desc{font-size:.79rem;color:var(--tx-mid);line-height:1.62;margin-bottom:.9rem;}
+.cc-tags{display:flex;flex-wrap:wrap;gap:.3rem;}
+.cc-tag{padding:.2rem .55rem;background:var(--navy);color:var(--white);font-size:.62rem;font-weight:600;text-transform:uppercase;}
+.cc-salary{font-size:.72rem;font-weight:700;color:var(--green);margin-top:.6rem;display:flex;align-items:center;gap:.3rem;}
+.cc-salary::before{content:'💰';font-size:.8rem;}
+.course-brochure-strip{
+  margin-top:2.5rem;background:var(--cream-dark);padding:1.5rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+}
+.cb-text{font-size:.83rem;color:var(--tx-mid);}
+.cb-text strong{color:var(--navy);}
+.dl-group{display:flex;gap:.7rem;flex-wrap:wrap;}
+.btn-dl-outline{
+  display:inline-flex;align-items:center;gap:.4rem;
+  padding:.65rem 1.4rem;border:2px solid var(--navy);color:var(--navy);
+  font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  transition:all var(--transition);
+}
+.btn-dl-outline:hover{background:var(--navy);color:var(--white);}
+
+/* ══════════════════════════════════════════
+   LEGAL PROCESS (accordion timeline)
+══════════════════════════════════════════ */
+#legal{background:var(--cream);}
+.legal-tabs{display:flex;gap:1px;flex-wrap:wrap;margin-bottom:2.5rem;background:rgba(10,22,40,.1);}
+.legal-tab{
+  flex:1;min-width:140px;padding:.75rem 1rem;background:var(--white);
+  font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:600;
+  letter-spacing:.07em;text-transform:uppercase;text-align:center;
+  color:var(--tx-mid);cursor:pointer;border:none;
+  transition:all var(--transition);
+}
+.legal-tab.active{background:var(--navy);color:var(--gold);}
+.legal-tab:hover:not(.active){background:var(--cream-dark);}
+.legal-panels>div{display:none;}
+.legal-panels>div.active{display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;animation:fadeUp .35s ease;}
+.legal-steps{display:flex;flex-direction:column;gap:0;position:relative;}
+.legal-steps::before{content:'';position:absolute;left:1.5rem;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold),rgba(201,168,76,.1));}
+.ls{display:flex;gap:2rem;margin-bottom:1.8rem;position:relative;}
+.ls-num{
+  width:3rem;height:3rem;flex-shrink:0;
+  background:var(--navy);border:2px solid var(--gold);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--gold);
+  position:relative;z-index:1;
+}
+.ls-body{padding-top:.3rem;}
+.ls-label{font-size:.63rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem;}
+.ls-title{font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--navy);margin-bottom:.35rem;}
+.ls-desc{font-size:.8rem;color:var(--tx-mid);line-height:1.65;}
+.ls-docs{margin-top:.6rem;display:flex;flex-wrap:wrap;gap:.35rem;}
+.ls-doc{padding:.18rem .55rem;background:var(--navy);color:rgba(255,255,255,.75);font-size:.62rem;}
+
+.legal-sidebar{display:flex;flex-direction:column;gap:1.2rem;}
+.ls-info-box{background:var(--white);padding:1.4rem;border-left:3px solid var(--gold);}
+.ls-info-box h4{font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;}
+.ls-info-row{display:flex;justify-content:space-between;font-size:.8rem;color:var(--tx-mid);padding:.35rem 0;border-bottom:1px solid var(--cream-dark);}
+.ls-info-row:last-child{border-bottom:none;}
+.ls-info-row strong{color:var(--navy);}
+.ls-dl-box{background:var(--navy);padding:1.4rem;text-align:center;}
+.ls-dl-box h4{font-family:'Playfair Display',serif;font-size:1rem;color:var(--white);margin-bottom:.4rem;}
+.ls-dl-box p{font-size:.75rem;color:rgba(255,255,255,.45);margin-bottom:1rem;}
+
+/* ══════════════════════════════════════════
+   SERVICES GRID
+══════════════════════════════════════════ */
+#services{background:var(--white);}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:rgba(10,22,40,.08);margin-top:3rem;}
+.svc-card{
+  background:var(--cream);padding:2rem;
+  position:relative;overflow:hidden;cursor:default;
+  transition:background var(--transition);
+}
+.svc-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:var(--gold);transform:scaleX(0);transform-origin:left;
+  transition:transform var(--transition);
+}
+.svc-card:hover{background:var(--navy);}
+.svc-card:hover::after{transform:scaleX(1);}
+.svc-card:hover .svc-step,.svc-card:hover .svc-title{color:var(--white);}
+.svc-card:hover .svc-desc{color:rgba(255,255,255,.55);}
+.svc-card:hover .svc-pts li{color:rgba(255,255,255,.5);}
+.svc-card:hover .svc-ico{filter:grayscale(0);}
+.svc-step{font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.7rem;transition:color var(--transition);}
+.svc-ico{font-size:1.9rem;margin-bottom:.9rem;display:block;}
+.svc-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:600;color:var(--navy);margin-bottom:.6rem;transition:color var(--transition);}
+.svc-desc{font-size:.79rem;line-height:1.62;color:var(--tx-mid);transition:color var(--transition);margin-bottom:.7rem;}
+.svc-pts{list-style:none;}
+.svc-pts li{font-size:.75rem;color:var(--tx-mid);padding:.15rem 0 .15rem .9rem;position:relative;transition:color var(--transition);}
+.svc-pts li::before{content:'›';position:absolute;left:0;color:var(--gold);font-weight:700;}
+
+/* ══════════════════════════════════════════
+   EXAMS SECTION
+══════════════════════════════════════════ */
+#exams{background:var(--navy);}
+.exams-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.5rem;}
+.exam-card{
+  padding:1.8rem;background:rgba(255,255,255,.05);
+  border:1px solid rgba(201,168,76,.15);transition:all var(--transition);
+}
+.exam-card:hover{background:rgba(201,168,76,.08);border-color:var(--gold);transform:translateY(-3px);}
+.exam-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.8rem;}
+.exam-name{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;color:var(--gold);}
+.exam-dest{display:flex;gap:.3rem;flex-wrap:wrap;}
+.exam-d{padding:.15rem .45rem;background:rgba(201,168,76,.12);font-size:.58rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--gold);}
+.exam-full{font-size:.68rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.8rem;}
+.exam-desc{font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.62;margin-bottom:.9rem;}
+.exam-rows{display:flex;flex-direction:column;gap:0;}
+.exam-row{font-size:.76rem;color:rgba(255,255,255,.4);padding:.22rem 0;border-top:1px solid rgba(255,255,255,.05);}
+.exam-row strong{color:var(--gold-light);}
+
+/* ══════════════════════════════════════════
+   SCHOLARSHIPS
+══════════════════════════════════════════ */
+#scholarships{background:var(--cream);}
+.schol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.5rem;}
+.schol-card{
+  background:var(--white);padding:2rem;
+  border-top:4px solid var(--gold);
+  transition:all var(--transition);
+}
+.schol-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);}
+.schol-flag{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tx-light);margin-bottom:.7rem;}
+.schol-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--navy);margin-bottom:.4rem;}
+.schol-amt{font-size:.92rem;font-weight:700;color:var(--green);margin-bottom:.7rem;}
+.schol-desc{font-size:.79rem;color:var(--tx-mid);line-height:1.6;margin-bottom:1rem;}
+.schol-link{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:.3rem;}
+.schol-link::after{content:'→';}
+.schol-link:hover{opacity:.75;}
+
+/* Brochure download section */
+#brochures{background:var(--white);}
+.brochure-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem;margin-top:2.5rem;}
+.brochure-card{
+  background:var(--cream);border:1px solid var(--cream-dark);
+  padding:1.6rem;display:flex;flex-direction:column;gap:1rem;
+  transition:all var(--transition);
+}
+.brochure-card:hover{box-shadow:var(--shadow-md);border-color:rgba(201,168,76,.3);}
+.bc-head{display:flex;align-items:center;gap:.9rem;}
+.bc-ico{
+  width:46px;height:46px;flex-shrink:0;
+  background:var(--navy);display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;
+}
+.bc-title{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:600;color:var(--navy);}
+.bc-sub{font-size:.7rem;color:var(--tx-light);margin-top:.15rem;}
+.bc-desc{font-size:.79rem;color:var(--tx-mid);line-height:1.6;}
+.bc-meta{display:flex;align-items:center;justify-content:space-between;}
+.bc-pages{font-size:.68rem;color:var(--tx-light);}
+.btn-dl-sm{
+  display:inline-flex;align-items:center;gap:.35rem;
+  padding:.5rem 1.1rem;background:var(--navy);color:var(--white);
+  font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  transition:all var(--transition);
+}
+.btn-dl-sm:hover{background:var(--gold);color:var(--navy);}
+
+/* ══════════════════════════════════════════
+   PROCESS TIMELINE
+══════════════════════════════════════════ */
+#process{background:var(--navy);}
+.process-wrap{margin-top:3.5rem;position:relative;}
+.process-wrap::before{content:'';position:absolute;left:2.3rem;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--gold),rgba(201,168,76,.1));}
+.ps{display:flex;gap:2.2rem;margin-bottom:2.2rem;}
+.ps-circ{
+  width:4.6rem;height:4.6rem;flex-shrink:0;
+  background:var(--navy-mid);border:2px solid var(--gold);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gold);
+  position:relative;z-index:1;
+}
+.ps-body{padding-top:.5rem;}
+.ps-when{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem;}
+.ps-title{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--white);margin-bottom:.4rem;}
+.ps-desc{font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.68;max-width:560px;}
+.ps-docs{margin-top:.6rem;display:flex;gap:.4rem;flex-wrap:wrap;}
+.ps-doc{padding:.18rem .5rem;border:1px solid rgba(201,168,76,.25);font-size:.6rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.5);}
+
+/* ══════════════════════════════════════════
+   TESTIMONIALS
+══════════════════════════════════════════ */
+#testimonials{background:var(--cream);}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2.5rem;}
+.test-card{
+  background:var(--white);padding:2rem;
+  border:1px solid var(--cream-dark);
+  position:relative;transition:all var(--transition);
+}
+.test-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);}
+.t-quote{position:absolute;top:1.2rem;right:1.5rem;font-family:'Playfair Display',serif;font-size:3.5rem;line-height:.5;color:var(--gold);opacity:.2;}
+.t-stars{color:var(--gold);font-size:.8rem;margin-bottom:.7rem;}
+.t-text{font-family:'Cormorant Garamond',serif;font-size:1rem;line-height:1.75;color:var(--tx-mid);margin-bottom:1.4rem;}
+.t-author{display:flex;align-items:center;gap:.8rem;}
+.t-av{
+  width:42px;height:42px;border-radius:50%;flex-shrink:0;
+  background:var(--navy);border:2px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--gold);
+}
+.t-name{font-size:.86rem;font-weight:700;color:var(--navy);}
+.t-info{font-size:.72rem;color:var(--tx-light);margin-top:.15rem;}
+.t-badge{display:inline-block;padding:.12rem .45rem;background:rgba(201,168,76,.12);color:var(--gold-dim);font-size:.6rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-top:.25rem;}
+
+/* ══════════════════════════════════════════
+   FAQ
+══════════════════════════════════════════ */
+#faq{background:var(--white);}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(10,22,40,.08);margin-top:2.5rem;}
+.faq-item{background:var(--cream);}
+.faq-q{
+  width:100%;text-align:left;padding:1.3rem 1.4rem;background:none;border:none;
+  font-family:'Montserrat',sans-serif;font-size:.84rem;font-weight:600;color:var(--navy);
+  cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  transition:background var(--transition);
+}
+.faq-q:hover{background:var(--white);}
+.faq-q.open{background:var(--navy);color:var(--white);}
+.faq-tog{font-size:1.1rem;font-weight:300;flex-shrink:0;color:var(--gold);transition:transform var(--transition);}
+.faq-q.open .faq-tog{transform:rotate(45deg);}
+.faq-a{display:none;padding:0 1.4rem 1.3rem;font-size:.8rem;line-height:1.72;color:var(--tx-mid);background:var(--cream);}
+.faq-a.open{display:block;}
+
+/* ══════════════════════════════════════════
+   CTA BAND
+══════════════════════════════════════════ */
+#cta{background:var(--gold);padding:5rem 5%;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+#cta h2{color:var(--navy);margin-bottom:.4rem;max-width:520px;}
+#cta p{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:rgba(10,22,40,.65);}
+.cta-acts{display:flex;flex-direction:column;gap:.7rem;align-items:flex-end;}
+
+/* ══════════════════════════════════════════
+   CONTACT
+══════════════════════════════════════════ */
+#contact{background:var(--navy);}
+.contact-wrap{display:grid;grid-template-columns:1fr 1.45fr;gap:5rem;margin-top:3.5rem;align-items:start;}
+.ci h3{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--white);margin-bottom:2rem;}
+.ci-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.6rem;}
+.ci-ico{width:40px;height:40px;flex-shrink:0;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:.95rem;color:var(--gold);}
+.ci-label{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem;}
+.ci-val{font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(255,255,255,.68);line-height:1.5;}
+.ci-val a{color:rgba(255,255,255,.68);}
+.ci-val a:hover{color:var(--gold);}
+.ci-socials{margin-top:2rem;}
+.ci-socials h4{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem;}
+.soc-row{display:flex;gap:.6rem;flex-wrap:wrap;}
+.soc-btn{padding:.5rem 1rem;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);font-size:.72rem;font-weight:600;transition:all var(--transition);display:flex;align-items:center;gap:.35rem;}
+.soc-btn:hover{border-color:var(--gold);color:var(--gold);}
+
+.cf{background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.2);padding:2.6rem;}
+.cf h3{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--white);margin-bottom:1.8rem;}
+.f2{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+.fg{margin-bottom:.9rem;}
+.fg label{display:block;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.38rem;}
+.fg input,.fg select,.fg textarea{
+  width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  padding:.75rem .9rem;color:var(--white);
+  font-family:'Montserrat',sans-serif;font-size:.82rem;outline:none;
+  transition:border-color var(--transition);
+}
+.fg select option{background:var(--navy-mid);}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.22);}
+.fg textarea{resize:vertical;min-height:88px;}
+.f-submit{
+  width:100%;padding:.95rem;background:var(--gold);color:var(--navy);
+  font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;border:none;cursor:pointer;
+  transition:background var(--transition);margin-top:.2rem;
+}
+.f-submit:hover{background:var(--gold-light);}
+
+/* ══════════════════════════════════════════
+   FLOATING WHATSAPP
+══════════════════════════════════════════ */
+.wa-float{
+  position:fixed;bottom:2rem;right:2rem;z-index:999;
+  display:flex;align-items:center;gap:.6rem;
+  background:#25D366;color:#fff;
+  padding:.8rem 1.4rem;
+  font-size:.73rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  box-shadow:0 8px 30px rgba(37,211,102,.35);
+  animation:waPulse 3s ease-in-out infinite;
+}
+.wa-float:hover{background:#1eb855;box-shadow:0 14px 40px rgba(37,211,102,.5);}
+@keyframes waPulse{0%,100%{transform:translateY(0);box-shadow:0 8px 30px rgba(37,211,102,.35);}50%{transform:translateY(-6px);box-shadow:0 16px 45px rgba(37,211,102,.5);}}
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+footer{background:#060d1a;padding:3.5rem 5% 1.8rem;border-top:1px solid rgba(201,168,76,.12);}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:2.5rem;margin-bottom:3rem;}
+.foot-logo{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:.9rem;}
+.foot-logo span{color:var(--gold);}
+.foot-tag{font-family:'Cormorant Garamond',serif;font-size:.92rem;color:rgba(255,255,255,.35);line-height:1.6;margin-bottom:1.1rem;}
+.foot-contact{font-size:.74rem;color:rgba(255,255,255,.28);line-height:1.8;}
+.foot-contact a{color:var(--gold);}
+.foot-h{font-size:.67rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.foot-links{display:flex;flex-direction:column;gap:.5rem;}
+.foot-links a{font-size:.79rem;color:rgba(255,255,255,.38);transition:color var(--transition);}
+.foot-links a:hover{color:var(--gold);}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:1.4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.foot-copy{font-size:.71rem;color:rgba(255,255,255,.2);}
+.foot-flags{display:flex;gap:.7rem;font-size:1.2rem;}
+
+/* ══════════════════════════════════════════
+   MODAL for brochure download
+══════════════════════════════════════════ */
+.modal-overlay{position:fixed;inset:0;background:rgba(10,22,40,.8);z-index:9999;display:none;align-items:center;justify-content:center;padding:2rem;}
+.modal-overlay.open{display:flex;animation:fadeIn .3s ease;}
+.modal-box{background:var(--white);max-width:480px;width:100%;padding:2.5rem;position:relative;}
+.modal-box h3{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--navy);margin-bottom:.5rem;}
+.modal-box p{font-size:.83rem;color:var(--tx-mid);margin-bottom:1.5rem;line-height:1.65;}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--tx-light);}
+.modal-close:hover{color:var(--red);}
+.modal-form{display:flex;flex-direction:column;gap:.8rem;}
+.modal-input{
+  padding:.75rem .9rem;border:1px solid var(--cream-dark);font-family:'Montserrat',sans-serif;
+  font-size:.83rem;color:var(--navy);outline:none;transition:border-color var(--transition);
+}
+.modal-input:focus{border-color:var(--gold);}
+.modal-submit{
+  padding:.9rem;background:var(--gold);color:var(--navy);border:none;
+  font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
+  transition:background var(--transition);
+}
+.modal-submit:hover{background:var(--gold-light);}
+.modal-disclaimer{font-size:.68rem;color:var(--tx-light);text-align:center;}
+
+/* ══════════════════════════════════════════
+   UTILITY  ANIMATIONS
+══════════════════════════════════════════ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(26px);}to{opacity:1;transform:none;}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media(max-width:1200px){
+  .country-grid{grid-template-columns:repeat(3,1fr);}
+  .svc-grid{grid-template-columns:repeat(2,1fr);}
+  .foot-grid{grid-template-columns:1fr 1fr 1fr;}
+  .exams-grid{grid-template-columns:repeat(2,1fr);}
+  .schol-grid{grid-template-columns:repeat(2,1fr);}
+  .test-grid{grid-template-columns:repeat(2,1fr);}
+  .cd-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:900px){
+  .topbar{display:none;}
+  .nav-menu{display:none;}
+  .why-grid,.contact-wrap,.legal-panels>div.active{grid-template-columns:1fr;gap:2.5rem;}
+  .faq-grid{grid-template-columns:1fr;}
+  #cta{flex-direction:column;text-align:center;}
+  .cta-acts{align-items:center;}
+  .country-grid{grid-template-columns:repeat(2,1fr);}
+  .cd-grid{grid-template-columns:1fr;}
+  .f2{grid-template-columns:1fr;}
+  .svc-grid{grid-template-columns:1fr 1fr;}
+  .test-grid{grid-template-columns:1fr;}
+  .schol-grid{grid-template-columns:1fr;}
+  .exams-grid{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  section{padding:4rem 4%;}
+  .country-grid{grid-template-columns:1fr 1fr;}
+  .svc-grid{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:1.5rem;}
+  .wa-float span{display:none;}
+  .wa-float{padding:.9rem;width:3.2rem;height:3.2rem;justify-content:center;border-radius:50%;}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════ TOPBAR ════════════ -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📍 Ang Mo Kio, Singapore 560542</span>
+    <span class="tb-sep">|</span>
+    <span>Mon–Fri 9am–7pm · Sat 10am–4pm</span>
+  </div>
+  <div class="topbar-right">
+    <span>📞 <a href="tel:+6590640850">+65 9064 0850</a></span>
+    <span class="tb-sep">|</span>
+    <span>✉ <a href="mailto:chaudharyashish1121995@gmail.com">chaudharyashish1121995@gmail.com</a></span>
+  </div>
+</div>
+
+<!-- ════════════ MEGA NAV ════════════ -->
+<header class="main-nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">GES <span>Global</span></a>
+
+    <ul class="nav-menu">
+
+      <!-- Countries -->
+      <li class="nav-item">
+        <a class="nav-link" href="#countries">Countries <span class="nav-arrow">▾</span></a>
+        <div class="mega-drop" style="min-width:560px;">
+          <div class="mega-inner mega-2">
+            <div>
+              <div class="mega-col">
+                <h4>Study Destinations</h4>
+                <div class="mega-links">
+                  <a class="mega-link" onclick="openCountry('uk')"><span class="mega-link-icon">🇬🇧</span> United Kingdom</a>
+                  <a class="mega-link" onclick="openCountry('usa')"><span class="mega-link-icon">🇺🇸</span> United States of America</a>
+                  <a class="mega-link" onclick="openCountry('canada')"><span class="mega-link-icon">🇨🇦</span> Canada</a>
+                  <a class="mega-link" onclick="openCountry('australia')"><span class="mega-link-icon">🇦🇺</span> Australia</a>
+                  <a class="mega-link" onclick="openCountry('germany')"><span class="mega-link-icon">🇩🇪</span> Germany</a>
+                  <a class="mega-link" onclick="openCountry('netherlands')"><span class="mega-link-icon">🇳🇱</span> Netherlands</a>
+                  <a class="mega-link" onclick="openCountry('ireland')"><span class="mega-link-icon">🇮🇪</span> Ireland</a>
+                  <a class="mega-link" onclick="openCountry('france')"><span class="mega-link-icon">🇫🇷</span> France</a>
+                </div>
+              </div>
+            </div>
+            <div class="mega-featured">
+              <span class="mega-feat-label">Most Popular in 2025</span>
+              <div class="mega-feat-title">UK & Canada Remain Top Choices for Singapore Students</div>
+              <p style="font-size:.79rem;color:rgba(255,255,255,.55);line-height:1.65;">Shorter programmes, post-study work rights, and clear PR pathways make UK & Canada the most applied-to destinations.</p>
+              <a class="mega-feat-link" href="#countries">Explore All Destinations</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- University Groups -->
+      <li class="nav-item">
+        <a class="nav-link" href="#uni-groups">Universities <span class="nav-arrow">▾</span></a>
+        <div class="mega-drop" style="min-width:620px;">
+          <div class="mega-inner mega-2">
+            <div>
+              <div class="mega-col">
+                <h4>University Groups</h4>
+                <div class="mega-links">
+                  <a class="mega-link" onclick="showUG('ivy')"><span class="mega-link-icon">🏛️</span> Ivy League (USA)</a>
+                  <a class="mega-link" onclick="showUG('russell')"><span class="mega-link-icon">🎓</span> Russell Group (UK)</a>
+                  <a class="mega-link" onclick="showUG('g8')"><span class="mega-link-icon">🦘</span> Group of Eight (Australia)</a>
+                  <a class="mega-link" onclick="showUG('triple')"><span class="mega-link-icon">💼</span> Triple Crown Business Schools</a>
+                  <a class="mega-link" onclick="showUG('europe')"><span class="mega-link-icon">🌍</span> Public Universities — Europe</a>
+                  <a class="mega-link" onclick="showUG('u15')"><span class="mega-link-icon">🍁</span> U15 Canada</a>
+                </div>
+              </div>
+            </div>
+            <div class="mega-featured">
+              <span class="mega-feat-label">Why University Group Matters</span>
+              <div class="mega-feat-title">Employer Recognition & Visa Success</div>
+              <p style="font-size:.79rem;color:rgba(255,255,255,.55);line-height:1.65;">Graduates from recognised university groups often have faster visa processing, higher employer demand, and better scholarship eligibility.</p>
+              <a class="mega-feat-link" href="#uni-groups">Browse All Groups</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Courses -->
+      <li class="nav-item">
+        <a class="nav-link" href="#courses">Courses <span class="nav-arrow">▾</span></a>
+        <div class="mega-drop" style="min-width:600px;">
+          <div class="mega-inner mega-3">
+            <div class="mega-col">
+              <h4>STEM & Technology</h4>
+              <div class="mega-links">
+                <a class="mega-link" onclick="showCourse('stem')"><span class="mega-link-icon">💻</span> Computer Science & IT</a>
+                <a class="mega-link" onclick="showCourse('stem')"><span class="mega-link-icon">🔬</span> Data Science & AI</a>
+                <a class="mega-link" onclick="showCourse('stem')"><span class="mega-link-icon">⚙️</span> Engineering</a>
+                <a class="mega-link" onclick="showCourse('stem')"><span class="mega-link-icon">🧬</span> Biotechnology</a>
+              </div>
+            </div>
+            <div class="mega-col">
+              <h4>Business & Finance</h4>
+              <div class="mega-links">
+                <a class="mega-link" onclick="showCourse('biz')"><span class="mega-link-icon">📊</span> MBA</a>
+                <a class="mega-link" onclick="showCourse('biz')"><span class="mega-link-icon">💹</span> Finance & Banking</a>
+                <a class="mega-link" onclick="showCourse('biz')"><span class="mega-link-icon">📈</span> Economics</a>
+                <a class="mega-link" onclick="showCourse('biz')"><span class="mega-link-icon">🏢</span> Management</a>
+              </div>
+            </div>
+            <div class="mega-col">
+              <h4>Arts & Social Sciences</h4>
+              <div class="mega-links">
+                <a class="mega-link" onclick="showCourse('arts')"><span class="mega-link-icon">⚕️</span> Health Sciences</a>
+                <a class="mega-link" onclick="showCourse('arts')"><span class="mega-link-icon">⚖️</span> Law</a>
+                <a class="mega-link" onclick="showCourse('arts')"><span class="mega-link-icon">🎨</span> Design & Architecture</a>
+                <a class="mega-link" onclick="showCourse('arts')"><span class="mega-link-icon">🌐</span> International Relations</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Legal Process -->
+      <li class="nav-item">
+        <a class="nav-link" href="#legal">Legal Process <span class="nav-arrow">▾</span></a>
+        <div class="mega-drop" style="min-width:540px;">
+          <div class="mega-inner mega-2">
+            <div class="mega-col">
+              <h4>Process by Country</h4>
+              <div class="mega-links">
+                <a class="mega-link" onclick="showLegal('uk')"><span class="mega-link-icon">🇬🇧</span> UK Student Visa (CAS)</a>
+                <a class="mega-link" onclick="showLegal('usa')"><span class="mega-link-icon">🇺🇸</span> US F-1 Student Visa</a>
+                <a class="mega-link" onclick="showLegal('canada')"><span class="mega-link-icon">🇨🇦</span> Canada Study Permit</a>
+                <a class="mega-link" onclick="showLegal('australia')"><span class="mega-link-icon">🇦🇺</span> Australia Student Visa (500)</a>
+                <a class="mega-link" onclick="showLegal('germany')"><span class="mega-link-icon">🇩🇪</span> Germany Student Visa</a>
+              </div>
+            </div>
+            <div class="mega-col">
+              <h4>Documentation</h4>
+              <div class="mega-links">
+                <a class="mega-link" href="#legal"><span class="mega-link-icon">📄</span> Apostille & Attestation</a>
+                <a class="mega-link" href="#legal"><span class="mega-link-icon">🏦</span> Financial Proof Guide</a>
+                <a class="mega-link" href="#legal"><span class="mega-link-icon">✍️</span> SOP Writing Tips</a>
+                <a class="mega-link" href="#legal"><span class="mega-link-icon">🔐</span> Police Clearance</a>
+                <a class="mega-link" href="#brochures"><span class="mega-link-icon">📥</span> Download Visa Checklist</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Services -->
+      <li class="nav-item">
+        <a class="nav-link" href="#services">Services <span class="nav-arrow">▾</span></a>
+        <div class="mega-drop" style="min-width:560px;">
+          <div class="mega-inner mega-2">
+            <div class="mega-col">
+              <h4>Our Core Services</h4>
+              <div class="mega-links">
+                <a class="mega-link" href="#services"><span class="mega-link-icon">🎯</span> University Shortlisting</a>
+                <a class="mega-link" href="#services"><span class="mega-link-icon">✍️</span> SOP & Application Writing</a>
+                <a class="mega-link" href="#services"><span class="mega-link-icon">✈️</span> Visa Assistance</a>
+                <a class="mega-link" href="#services"><span class="mega-link-icon">💰</span> Education Loans</a>
+                <a class="mega-link" href="#services"><span class="mega-link-icon">💱</span> Forex & Remittance</a>
+                <a class="mega-link" href="#services"><span class="mega-link-icon">🎓</span> Scholarship Guidance</a>
+              </div>
+            </div>
+            <div class="mega-col">
+              <h4>Resources</h4>
+              <div class="mega-links">
+                <a class="mega-link" href="#exams"><span class="mega-link-icon">📝</span> Exam Guidance (IELTS, GRE…)</a>
+                <a class="mega-link" href="#scholarships"><span class="mega-link-icon">🏆</span> Scholarship Database</a>
+                <a class="mega-link" href="#brochures"><span class="mega-link-icon">📥</span> Download Brochures</a>
+                <a class="mega-link" href="#process"><span class="mega-link-icon">🗺️</span> Step-by-Step Process</a>
+                <a class="mega-link" href="#faq"><span class="mega-link-icon">❓</span> Frequently Asked Questions</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+      <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="https://wa.me/6590640850" target="_blank" class="nav-wa">💬 WhatsApp</a>
+      <a href="#contact" class="nav-cta">Free Consult</a>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════ HERO ════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-globe">🌐</div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Singapore's Trusted Study Abroad Consultants</div>
+    <h1>Your <em>Gateway</em><br>to Global<br>Education</h1>
+    <p class="hero-lead">End-to-end admission support for students aspiring to study in leading universities across the UK, USA, Canada, Australia, and Europe. From university selection to visa approval — we guide you at every step.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-gold">Get Free Counselling</a>
+      <a href="#countries" class="btn-outline">Explore Destinations</a>
+      <a href="#brochures" class="btn-outline">📥 Download Brochure</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">500+</div><div class="stat-label">Students Placed</div></div>
+      <div><div class="stat-num">50+</div><div class="stat-label">Partner Universities</div></div>
+      <div><div class="stat-num">5</div><div class="stat-label">Countries</div></div>
+      <div><div class="stat-num">98%</div><div class="stat-label">Visa Success</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="dest-bar">
+  <a class="dest-pill" onclick="openCountry('uk')">🇬🇧 United Kingdom</a>
+  <a class="dest-pill" onclick="openCountry('usa')">🇺🇸 United States</a>
+  <a class="dest-pill" onclick="openCountry('canada')">🇨🇦 Canada</a>
+  <a class="dest-pill" onclick="openCountry('australia')">🇦🇺 Australia</a>
+  <a class="dest-pill" onclick="showUG('europe')">🌍 Europe</a>
+</div>
+
+<!-- ════════════ WHY US ════════════ -->
+<section id="why">
+  <div class="section-head">
+    <div><div class="eyebrow">Why Choose GES</div><h2>We're More Than<br>a Consultancy</h2></div>
+    <p class="sub">Built on trust, expertise, and genuine care for every student's future since day one.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-items">
+      <div class="why-card reveal"><div class="why-ico">🎯</div><div><div class="why-h">1-on-1 Personalised Counselling</div><div class="why-p">Every student is unique. We take time to understand your academic background, career aspirations, and budget to craft a personalised roadmap that truly fits you — not a generic template.</div></div></div>
+      <div class="why-card reveal reveal-d1"><div class="why-ico">🏅</div><div><div class="why-h">Deep Destination Expertise</div><div class="why-p">Our advisors have hands-on experience with admissions, visa procedures, and financial planning across the UK, USA, Canada, Australia, and Europe. Real knowledge, not guesswork.</div></div></div>
+      <div class="why-card reveal reveal-d2"><div class="why-ico">🔄</div><div><div class="why-h">True End-to-End Support</div><div class="why-p">From first consultation to landing in your new country — SOPs, documentation, visa, loans, forex, and pre-departure briefing. We handle every single step.</div></div></div>
+      <div class="why-card reveal reveal-d3"><div class="why-ico">💎</div><div><div class="why-h">Transparent & Ethical</div><div class="why-p">No hidden fees, no false promises. Honest assessments and realistic guidance so you make truly informed decisions — even when it means advising you to wait a semester.</div></div></div>
+    </div>
+    <div class="stats-box reveal">
+      <div class="stats-box-inner">
+        <h3>Our Track Record Speaks</h3>
+        <div class="stats-4">
+          <div class="stat-box"><div class="stat-big">500+</div><div class="stat-s">Students Placed</div></div>
+          <div class="stat-box"><div class="stat-big">98%</div><div class="stat-s">Visa Success Rate</div></div>
+          <div class="stat-box"><div class="stat-big">50+</div><div class="stat-s">University Partners</div></div>
+          <div class="stat-box"><div class="stat-big">5+</div><div class="stat-s">Years Experience</div></div>
+        </div>
+        <div class="quote-box">
+          <p>"We believe every student deserves access to world-class education. Our mission is to make studying abroad simple, affordable, and achievable for everyone."</p>
+          <div class="quote-by">— GES Team, Singapore</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ COUNTRIES ════════════ -->
+<section id="countries">
+  <div class="section-head">
+    <div><div class="eyebrow">Study Destinations</div><h2>Choose Your<br>Dream Country</h2></div>
+    <p class="sub">Click any destination for detailed tuition costs, top universities, visa timelines, and post-study work rights.</p>
+  </div>
+  <div class="country-grid">
+    <div class="country-card reveal" onclick="toggleCountry('uk')">
+      <span class="c-flag">🇬🇧</span>
+      <div class="c-name">United Kingdom</div>
+      <div class="c-stat">1-year Master's · Graduate Route Visa</div>
+      <div class="c-tags"><span class="c-tag">Russell Group</span><span class="c-tag">2-yr PSW</span></div>
+      <div class="c-link">Explore UK →</div>
+    </div>
+    <div class="country-card reveal reveal-d1" onclick="toggleCountry('usa')">
+      <span class="c-flag">🇺🇸</span>
+      <div class="c-name">United States</div>
+      <div class="c-stat">F-1 Visa · OPT up to 3 years</div>
+      <div class="c-tags"><span class="c-tag">Ivy League</span><span class="c-tag">STEM OPT</span></div>
+      <div class="c-link">Explore USA →</div>
+    </div>
+    <div class="country-card reveal reveal-d2" onclick="toggleCountry('canada')">
+      <span class="c-flag">🇨🇦</span>
+      <div class="c-name">Canada</div>
+      <div class="c-stat">PGWP up to 3 yrs · PR Pathway</div>
+      <div class="c-tags"><span class="c-tag">U15</span><span class="c-tag">PR Pathway</span></div>
+      <div class="c-link">Explore Canada →</div>
+    </div>
+    <div class="country-card reveal reveal-d3" onclick="toggleCountry('australia')">
+      <span class="c-flag">🇦🇺</span>
+      <div class="c-name">Australia</div>
+      <div class="c-stat">Subclass 485 · 2–4 yr PSW</div>
+      <div class="c-tags"><span class="c-tag">Group of 8</span><span class="c-tag">485 Visa</span></div>
+      <div class="c-link">Explore Australia →</div>
+    </div>
+    <div class="country-card reveal" onclick="toggleCountry('europe')">
+      <span class="c-flag">🌍</span>
+      <div class="c-name">Europe</div>
+      <div class="c-stat">Low tuition · Schengen Access</div>
+      <div class="c-tags"><span class="c-tag">Free in Germany</span><span class="c-tag">27 Countries</span></div>
+      <div class="c-link">Explore Europe →</div>
+    </div>
+  </div>
+
+  <!-- Country Detail Panels -->
+  <div id="cd-uk" class="country-detail">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+      <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--navy);">🇬🇧 United Kingdom — Detailed Guide</div>
+      <button class="cd-close" onclick="closeCountry('uk')">✕ Close</button>
+    </div>
+    <div class="cd-grid">
+      <div class="cd-section"><h4>Cost Breakdown (Annual)</h4>
+        <div class="cd-row"><span>UG Tuition</span><strong>£12,000 – £25,000</strong></div>
+        <div class="cd-row"><span>PG Tuition</span><strong>£15,000 – £35,000</strong></div>
+        <div class="cd-row"><span>Accommodation</span><strong>£8,000 – £14,000</strong></div>
+        <div class="cd-row"><span>Living Expenses</span><strong>£7,000 – £12,000</strong></div>
+        <div class="cd-row"><span>Student Visa Fee</span><strong>£490</strong></div>
+        <div class="cd-row"><span>Health Surcharge (IHS)</span><strong>£470/year</strong></div>
+      </div>
+      <div class="cd-section"><h4>Visa & Post-Study</h4>
+        <div class="cd-row"><span>Visa Type</span><strong>Student Visa (Tier 4)</strong></div>
+        <div class="cd-row"><span>Processing Time</span><strong>6–8 weeks</strong></div>
+        <div class="cd-row"><span>Post-Study Work</span><strong>Graduate Route — 2 years</strong></div>
+        <div class="cd-row"><span>Work While Studying</span><strong>20 hrs/week</strong></div>
+        <div class="cd-row"><span>Language Proof</span><strong>IELTS 6.0+ / UKVI</strong></div>
+        <div class="cd-row"><span>Intakes</span><strong>Sept · Jan</strong></div>
+        <h4 style="margin-top:1.2rem;">Partner Universities</h4>
+        <div class="cd-uni-tags"><span class="cd-uni-tag">Univ. of Edinburgh</span><span class="cd-uni-tag">Univ. of Manchester</span><span class="cd-uni-tag">King's College London</span><span class="cd-uni-tag">Univ. of Leeds</span><span class="cd-uni-tag">Univ. of Birmingham</span><span class="cd-uni-tag">Univ. of Bristol</span></div>
+      </div>
+      <div class="cd-section"><h4>Key Highlights</h4>
+        <div class="cd-bullets">
+          <div class="cd-bullet">World-renowned Russell Group universities</div>
+          <div class="cd-bullet">1-year Master's programmes save time & fees</div>
+          <div class="cd-bullet">Graduate Route Visa — 2 years post-study work</div>
+          <div class="cd-bullet">Chevening & Commonwealth scholarships available</div>
+          <div class="cd-bullet">Multicultural environment, world-class research</div>
+          <div class="cd-bullet">Strong alumni networks in finance, law & tech</div>
+        </div>
+        <div style="margin-top:1.2rem;"><button class="btn-dl-sm" onclick="openBrochureModal('UK Study Guide 2025')">📥 Download UK Guide</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cd-usa" class="country-detail">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+      <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--navy);">🇺🇸 United States — Detailed Guide</div>
+      <button class="cd-close" onclick="closeCountry('usa')">✕ Close</button>
+    </div>
+    <div class="cd-grid">
+      <div class="cd-section"><h4>Cost Breakdown (Annual)</h4>
+        <div class="cd-row"><span>UG Tuition</span><strong>$20,000 – $45,000</strong></div>
+        <div class="cd-row"><span>PG Tuition</span><strong>$25,000 – $55,000</strong></div>
+        <div class="cd-row"><span>Accommodation</span><strong>$8,000 – $18,000</strong></div>
+        <div class="cd-row"><span>Living Expenses</span><strong>$8,000 – $15,000</strong></div>
+        <div class="cd-row"><span>Health Insurance</span><strong>$1,500 – $3,000</strong></div>
+        <div class="cd-row"><span>SEVIS + Visa Fee</span><strong>~$510</strong></div>
+      </div>
+      <div class="cd-section"><h4>Visa & Post-Study</h4>
+        <div class="cd-row"><span>Visa Type</span><strong>F-1 Student Visa</strong></div>
+        <div class="cd-row"><span>Processing Time</span><strong>3–4 months</strong></div>
+        <div class="cd-row"><span>OPT (General)</span><strong>12 months</strong></div>
+        <div class="cd-row"><span>OPT (STEM Extension)</span><strong>24 months additional</strong></div>
+        <div class="cd-row"><span>Work While Studying</span><strong>20 hrs/week on campus</strong></div>
+        <div class="cd-row"><span>Intakes</span><strong>Aug/Sept · Jan</strong></div>
+        <h4 style="margin-top:1.2rem;">Partner Universities</h4>
+        <div class="cd-uni-tags"><span class="cd-uni-tag">Univ. of Illinois</span><span class="cd-uni-tag">Purdue University</span><span class="cd-uni-tag">Northeastern Univ.</span><span class="cd-uni-tag">Arizona State Univ.</span><span class="cd-uni-tag">Univ. of Texas</span></div>
+      </div>
+      <div class="cd-section"><h4>Key Highlights</h4>
+        <div class="cd-bullets">
+          <div class="cd-bullet">Home to 4 of the world's top 10 universities</div>
+          <div class="cd-bullet">STEM OPT — 3 years of work authorization</div>
+          <div class="cd-bullet">World's largest scholarship & aid ecosystem</div>
+          <div class="cd-bullet">GRE/GMAT/SAT score pathways available</div>
+          <div class="cd-bullet">Co-op and internship programmes common</div>
+          <div class="cd-bullet">Path to H-1B work visa after graduation</div>
+        </div>
+        <div style="margin-top:1.2rem;"><button class="btn-dl-sm" onclick="openBrochureModal('USA Study Guide 2025')">📥 Download USA Guide</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cd-canada" class="country-detail">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+      <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--navy);">🇨🇦 Canada — Detailed Guide</div>
+      <button class="cd-close" onclick="closeCountry('canada')">✕ Close</button>
+    </div>
+    <div class="cd-grid">
+      <div class="cd-section"><h4>Cost Breakdown (Annual)</h4>
+        <div class="cd-row"><span>UG Tuition</span><strong>CAD 18,000 – 35,000</strong></div>
+        <div class="cd-row"><span>PG Tuition</span><strong>CAD 20,000 – 40,000</strong></div>
+        <div class="cd-row"><span>Accommodation</span><strong>CAD 8,000 – 16,000</strong></div>
+        <div class="cd-row"><span>Living Expenses</span><strong>CAD 8,000 – 12,000</strong></div>
+        <div class="cd-row"><span>Health Insurance</span><strong>CAD 600 – 800/year</strong></div>
+        <div class="cd-row"><span>Study Permit Fee</span><strong>CAD 150</strong></div>
+      </div>
+      <div class="cd-section"><h4>Visa & Post-Study</h4>
+        <div class="cd-row"><span>Permit Type</span><strong>Study Permit</strong></div>
+        <div class="cd-row"><span>Processing Time</span><strong>8–12 weeks</strong></div>
+        <div class="cd-row"><span>Post-Study Work (PGWP)</span><strong>Up to 3 years</strong></div>
+        <div class="cd-row"><span>Work While Studying</span><strong>20 hrs/week off-campus</strong></div>
+        <div class="cd-row"><span>Language Proof</span><strong>IELTS 6.0+ / TOEFL 83+</strong></div>
+        <div class="cd-row"><span>PR Pathway</span><strong>Express Entry / PNP</strong></div>
+        <h4 style="margin-top:1.2rem;">Partner Universities</h4>
+        <div class="cd-uni-tags"><span class="cd-uni-tag">Univ. of Toronto</span><span class="cd-uni-tag">UBC</span><span class="cd-uni-tag">McGill</span><span class="cd-uni-tag">Waterloo</span><span class="cd-uni-tag">York University</span></div>
+      </div>
+      <div class="cd-section"><h4>Key Highlights</h4>
+        <div class="cd-bullets">
+          <div class="cd-bullet">PGWP open work permit — up to 3 years</div>
+          <div class="cd-bullet">Clear pathway to permanent residency (PR)</div>
+          <div class="cd-bullet">Co-op programmes at many universities</div>
+          <div class="cd-bullet">Safe, multicultural, high quality of life</div>
+          <div class="cd-bullet">Spouse can get open work permit</div>
+          <div class="cd-bullet">US border access for internships</div>
+        </div>
+        <div style="margin-top:1.2rem;"><button class="btn-dl-sm" onclick="openBrochureModal('Canada Study Guide 2025')">📥 Download Canada Guide</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cd-australia" class="country-detail">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+      <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--navy);">🇦🇺 Australia — Detailed Guide</div>
+      <button class="cd-close" onclick="closeCountry('australia')">✕ Close</button>
+    </div>
+    <div class="cd-grid">
+      <div class="cd-section"><h4>Cost Breakdown (Annual)</h4>
+        <div class="cd-row"><span>UG Tuition</span><strong>AUD 20,000 – 38,000</strong></div>
+        <div class="cd-row"><span>PG Tuition</span><strong>AUD 22,000 – 45,000</strong></div>
+        <div class="cd-row"><span>Accommodation</span><strong>AUD 10,000 – 20,000</strong></div>
+        <div class="cd-row"><span>Living Expenses</span><strong>AUD 10,000 – 15,000</strong></div>
+        <div class="cd-row"><span>OSHC (Health Cover)</span><strong>AUD 600 – 700/year</strong></div>
+        <div class="cd-row"><span>Student Visa (500)</span><strong>AUD 710</strong></div>
+      </div>
+      <div class="cd-section"><h4>Visa & Post-Study</h4>
+        <div class="cd-row"><span>Visa Type</span><strong>Student Visa (Subclass 500)</strong></div>
+        <div class="cd-row"><span>Processing Time</span><strong>4–6 weeks</strong></div>
+        <div class="cd-row"><span>Post-Study (Subclass 485)</span><strong>2–4 years</strong></div>
+        <div class="cd-row"><span>Work While Studying</span><strong>48 hrs/fortnight</strong></div>
+        <div class="cd-row"><span>Language Proof</span><strong>IELTS 6.0+ / PTE 50+</strong></div>
+        <div class="cd-row"><span>PR Pathway</span><strong>Skilled Migration / 189/190</strong></div>
+        <h4 style="margin-top:1.2rem;">Partner Universities</h4>
+        <div class="cd-uni-tags"><span class="cd-uni-tag">Univ. of Melbourne</span><span class="cd-uni-tag">Monash</span><span class="cd-uni-tag">Univ. of Sydney</span><span class="cd-uni-tag">UNSW</span><span class="cd-uni-tag">Univ. of Queensland</span></div>
+      </div>
+      <div class="cd-section"><h4>Key Highlights</h4>
+        <div class="cd-bullets">
+          <div class="cd-bullet">485 visa — 2 to 4 years post-study work</div>
+          <div class="cd-bullet">Group of Eight universities world-ranked</div>
+          <div class="cd-bullet">OSHC health insurance included in planning</div>
+          <div class="cd-bullet">Strong demand for engineering, health & IT</div>
+          <div class="cd-bullet">Skilled migration pathway to PR available</div>
+          <div class="cd-bullet">High quality of life, safe environment</div>
+        </div>
+        <div style="margin-top:1.2rem;"><button class="btn-dl-sm" onclick="openBrochureModal('Australia Study Guide 2025')">📥 Download Australia Guide</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="cd-europe" class="country-detail">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;">
+      <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--navy);">🌍 Europe — Detailed Guide</div>
+      <button class="cd-close" onclick="closeCountry('europe')">✕ Close</button>
+    </div>
+    <div class="cd-grid">
+      <div class="cd-section"><h4>Cost Comparison (Annual)</h4>
+        <div class="cd-row"><span>Germany (public) Tuition</span><strong>€0 – €3,000</strong></div>
+        <div class="cd-row"><span>Netherlands Tuition</span><strong>€8,000 – €20,000</strong></div>
+        <div class="cd-row"><span>Ireland Tuition</span><strong>€10,000 – €25,000</strong></div>
+        <div class="cd-row"><span>France (public) Tuition</span><strong>€3,000 – €8,000</strong></div>
+        <div class="cd-row"><span>Living Expenses</span><strong>€7,000 – €12,000/year</strong></div>
+        <div class="cd-row"><span>Health Insurance</span><strong>€800 – €1,200/year</strong></div>
+      </div>
+      <div class="cd-section"><h4>Visa & Post-Study</h4>
+        <div class="cd-row"><span>Germany Visa</span><strong>National Visa (D)</strong></div>
+        <div class="cd-row"><span>Processing Time</span><strong>8–16 weeks</strong></div>
+        <div class="cd-row"><span>DE Job Seeker Visa</span><strong>18 months</strong></div>
+        <div class="cd-row"><span>Work While Studying</span><strong>120 full days/year (DE)</strong></div>
+        <div class="cd-row"><span>Schengen Travel</span><strong>27 EU countries</strong></div>
+        <div class="cd-row"><span>Blocked Account (DE)</span><strong>€11,208/year required</strong></div>
+        <h4 style="margin-top:1.2rem;">Partner Universities</h4>
+        <div class="cd-uni-tags"><span class="cd-uni-tag">TU Munich</span><span class="cd-uni-tag">TU Delft</span><span class="cd-uni-tag">Univ. of Amsterdam</span><span class="cd-uni-tag">Trinity Dublin</span><span class="cd-uni-tag">Sciences Po</span></div>
+      </div>
+      <div class="cd-section"><h4>Key Highlights</h4>
+        <div class="cd-bullets">
+          <div class="cd-bullet">German public universities — near-free tuition</div>
+          <div class="cd-bullet">World-class technical universities (TU Munich, etc.)</div>
+          <div class="cd-bullet">18-month job-seeker visa after graduation in Germany</div>
+          <div class="cd-bullet">Schengen — travel freely across 27 countries</div>
+          <div class="cd-bullet">English-taught Master's widely available</div>
+          <div class="cd-bullet">DAAD, Holland, Erasmus+ scholarships</div>
+        </div>
+        <div style="margin-top:1.2rem;"><button class="btn-dl-sm" onclick="openBrochureModal('Europe Study Guide 2025')">📥 Download Europe Guide</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ UNIVERSITY GROUPS ════════════ -->
+<section id="uni-groups">
+  <div class="section-head">
+    <div><div class="eyebrow" style="color:var(--gold);">University Groups</div><h2 class="light">Elite University<br>Groups Explained</h2></div>
+    <p class="sub light">Understanding these groups helps you target the right institutions for your profile, career goals, and visa prospects.</p>
+  </div>
+  <div class="ug-tabs">
+    <button class="ug-tab active" onclick="showUG('ivy',this)">🏛️ Ivy League</button>
+    <button class="ug-tab" onclick="showUG('russell',this)">🎓 Russell Group</button>
+    <button class="ug-tab" onclick="showUG('g8',this)">🦘 Group of Eight</button>
+    <button class="ug-tab" onclick="showUG('triple',this)">💼 Triple Crown B-Schools</button>
+    <button class="ug-tab" onclick="showUG('europe',this)">🌍 Public Europe</button>
+    <button class="ug-tab" onclick="showUG('u15',this)">🍁 U15 Canada</button>
+  </div>
+  <div class="ug-panels">
+
+    <div id="ug-ivy" class="active">
+      <div class="ug-intro"><p>The <strong style="color:var(--gold);">Ivy League</strong> comprises 8 prestigious private research universities in the northeastern United States. They are globally recognised for their academic excellence, powerful alumni networks, and immense research funding. Admission is highly competitive — typically 3–10% acceptance rates.</p></div>
+      <div class="uni-list">
+        <div class="uni-card"><div class="uni-rank">Ivy League · Founded 1636</div><div class="uni-name">Harvard University</div><div class="uni-loc">📍 Cambridge, Massachusetts</div><div class="uni-badges"><span class="uni-badge">Law</span><span class="uni-badge">Medicine</span><span class="uni-badge">Business</span><span class="uni-badge">QS #4</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Ivy League · Founded 1701</div><div class="uni-name">Yale University</div><div class="uni-loc">📍 New Haven, Connecticut</div><div class="uni-badges"><span class="uni-badge">Law</span><span class="uni-badge">Arts</span><span class="uni-badge">Drama</span><span class="uni-badge">QS #16</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Ivy League · Founded 1746</div><div class="uni-name">Princeton University</div><div class="uni-loc">📍 Princeton, New Jersey</div><div class="uni-badges"><span class="uni-badge">Sciences</span><span class="uni-badge">Engineering</span><span class="uni-badge">QS #13</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Ivy League · Founded 1754</div><div class="uni-name">Columbia University</div><div class="uni-loc">📍 New York City, New York</div><div class="uni-badges"><span class="uni-badge">Journalism</span><span class="uni-badge">Finance</span><span class="uni-badge">QS #22</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Ivy League · Founded 1755</div><div class="uni-name">University of Pennsylvania</div><div class="uni-loc">📍 Philadelphia, Pennsylvania</div><div class="uni-badges"><span class="uni-badge">Wharton MBA</span><span class="uni-badge">Medicine</span><span class="uni-badge">QS #14</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Ivy League · Founded 1769</div><div class="uni-name">Dartmouth College</div><div class="uni-loc">📍 Hanover, New Hampshire</div><div class="uni-badges"><span class="uni-badge">Liberal Arts</span><span class="uni-badge">Tuck MBA</span><span class="uni-badge">QS #244</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Ivy League · Founded 1764</div><div class="uni-name">Brown University</div><div class="uni-loc">📍 Providence, Rhode Island</div><div class="uni-badges"><span class="uni-badge">Open Curriculum</span><span class="uni-badge">Public Health</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Ivy League · Founded 1865</div><div class="uni-name">Cornell University</div><div class="uni-loc">📍 Ithaca, New York</div><div class="uni-badges"><span class="uni-badge">Engineering</span><span class="uni-badge">Hotel Mgmt</span><span class="uni-badge">QS #12</span></div></div>
+      </div>
+      <div class="ug-brochure-row">
+        <div class="ug-br-text"><h4>Ivy League Admissions Guide 2025–26</h4><p>Application strategies, essay tips, test score benchmarks, and GES-specific success stories from Ivy placements.</p></div>
+        <button class="btn-dl" onclick="openBrochureModal('Ivy League Admissions Guide 2025–26')">📥 Download Free Guide</button>
+      </div>
+    </div>
+
+    <div id="ug-russell">
+      <div class="ug-intro"><p>The <strong style="color:var(--gold);">Russell Group</strong> is an association of 24 leading UK research-intensive universities. They receive the majority of UK research funding and produce a disproportionate share of world-leading academic work. Degrees are recognised globally by employers and immigration authorities.</p></div>
+      <div class="uni-list">
+        <div class="uni-card"><div class="uni-rank">Russell Group · QS #2</div><div class="uni-name">University of Cambridge</div><div class="uni-loc">📍 Cambridge, England</div><div class="uni-badges"><span class="uni-badge">Sciences</span><span class="uni-badge">Mathematics</span><span class="uni-badge">Law</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Russell Group · QS #9</div><div class="uni-name">Imperial College London</div><div class="uni-loc">📍 London, England</div><div class="uni-badges"><span class="uni-badge">Engineering</span><span class="uni-badge">Medicine</span><span class="uni-badge">Business</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Russell Group · QS #22</div><div class="uni-name">University of Edinburgh</div><div class="uni-loc">📍 Edinburgh, Scotland</div><div class="uni-badges"><span class="uni-badge">Medicine</span><span class="uni-badge">Social Sciences</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Russell Group · QS #32</div><div class="uni-name">University of Manchester</div><div class="uni-loc">📍 Manchester, England</div><div class="uni-badges"><span class="uni-badge">Business</span><span class="uni-badge">Engineering</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Russell Group · QS #78</div><div class="uni-name">University of Birmingham</div><div class="uni-loc">📍 Birmingham, England</div><div class="uni-badges"><span class="uni-badge">Law</span><span class="uni-badge">Business</span><span class="uni-badge">Engineering</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Russell Group · QS #92</div><div class="uni-name">University of Leeds</div><div class="uni-loc">📍 Leeds, England</div><div class="uni-badges"><span class="uni-badge">Fashion</span><span class="uni-badge">Engineering</span><span class="uni-badge">Business</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Russell Group · QS #55</div><div class="uni-name">University of Bristol</div><div class="uni-loc">📍 Bristol, England</div><div class="uni-badges"><span class="uni-badge">Aerospace</span><span class="uni-badge">Law</span><span class="uni-badge">CS</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Russell Group · QS #86</div><div class="uni-name">King's College London</div><div class="uni-loc">📍 London, England</div><div class="uni-badges"><span class="uni-badge">Law</span><span class="uni-badge">Medicine</span><span class="uni-badge">War Studies</span></div></div>
+      </div>
+      <div class="ug-brochure-row">
+        <div class="ug-br-text"><h4>Russell Group Application Guide 2025–26</h4><p>How to write competitive UCAS personal statements, entry requirements by course, and scholarship opportunities.</p></div>
+        <button class="btn-dl" onclick="openBrochureModal('Russell Group Application Guide 2025–26')">📥 Download Free Guide</button>
+      </div>
+    </div>
+
+    <div id="ug-g8">
+      <div class="ug-intro"><p>The <strong style="color:var(--gold);">Group of Eight (Go8)</strong> is a coalition of Australia's leading research-intensive universities. They collectively receive about 70% of all competitive research funding in Australia and have strong international reputations, particularly in sciences, engineering, and medicine.</p></div>
+      <div class="uni-list">
+        <div class="uni-card"><div class="uni-rank">Go8 · QS #14</div><div class="uni-name">University of Melbourne</div><div class="uni-loc">📍 Melbourne, Victoria</div><div class="uni-badges"><span class="uni-badge">Medicine</span><span class="uni-badge">Law</span><span class="uni-badge">Business</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Go8 · QS #18</div><div class="uni-name">University of Sydney</div><div class="uni-loc">📍 Sydney, NSW</div><div class="uni-badges"><span class="uni-badge">Architecture</span><span class="uni-badge">Law</span><span class="uni-badge">Medicine</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Go8 · QS #19</div><div class="uni-name">University of New South Wales</div><div class="uni-loc">📍 Sydney, NSW</div><div class="uni-badges"><span class="uni-badge">Engineering</span><span class="uni-badge">Business</span><span class="uni-badge">CS</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Go8 · QS #37</div><div class="uni-name">Monash University</div><div class="uni-loc">📍 Melbourne, Victoria</div><div class="uni-badges"><span class="uni-badge">Pharmacy</span><span class="uni-badge">Engineering</span><span class="uni-badge">Business</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Go8 · QS #40</div><div class="uni-name">University of Queensland</div><div class="uni-loc">📍 Brisbane, Queensland</div><div class="uni-badges"><span class="uni-badge">Sciences</span><span class="uni-badge">Mining Eng</span><span class="uni-badge">Agriculture</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Go8 · QS #72</div><div class="uni-name">University of Adelaide</div><div class="uni-loc">📍 Adelaide, SA</div><div class="uni-badges"><span class="uni-badge">Medicine</span><span class="uni-badge">Wine Science</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Go8 · QS #90</div><div class="uni-name">University of Western Australia</div><div class="uni-loc">📍 Perth, WA</div><div class="uni-badges"><span class="uni-badge">Mining</span><span class="uni-badge">Agriculture</span><span class="uni-badge">Law</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Go8 · QS #67</div><div class="uni-name">Australian National Univ.</div><div class="uni-loc">📍 Canberra, ACT</div><div class="uni-badges"><span class="uni-badge">Politics</span><span class="uni-badge">Research</span><span class="uni-badge">Sciences</span></div></div>
+      </div>
+      <div class="ug-brochure-row">
+        <div class="ug-br-text"><h4>Australia Group of Eight Guide 2025</h4><p>Admission requirements, cost comparison, 485 visa details, and GES student success stories at Go8 universities.</p></div>
+        <button class="btn-dl" onclick="openBrochureModal('Australia Go8 Guide 2025')">📥 Download Free Guide</button>
+      </div>
+    </div>
+
+    <div id="ug-triple">
+      <div class="ug-intro"><p><strong style="color:var(--gold);">Triple Crown Accreditation</strong> refers to business schools holding all three major international accreditations simultaneously: <strong style="color:var(--gold-light);">AACSB</strong> (US), <strong style="color:var(--gold-light);">EQUIS</strong> (European), and <strong style="color:var(--gold-light);">AMBA</strong> (UK). Only ~1% of the world's 15,000+ business schools hold all three. This is the gold standard for MBA and business programmes.</p></div>
+      <div class="uni-list">
+        <div class="uni-card"><div class="uni-rank">Triple Crown · QS MBA #1</div><div class="uni-name">London Business School</div><div class="uni-loc">📍 London, UK</div><div class="uni-badges"><span class="uni-badge">AACSB</span><span class="uni-badge">EQUIS</span><span class="uni-badge">AMBA</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Triple Crown · QS MBA #3</div><div class="uni-name">INSEAD</div><div class="uni-loc">📍 France & Singapore</div><div class="uni-badges"><span class="uni-badge">AACSB</span><span class="uni-badge">EQUIS</span><span class="uni-badge">AMBA</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Triple Crown · Wharton School</div><div class="uni-name">University of Pennsylvania</div><div class="uni-loc">📍 Philadelphia, USA</div><div class="uni-badges"><span class="uni-badge">AACSB</span><span class="uni-badge">EQUIS</span><span class="uni-badge">AMBA</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Triple Crown · Said BS</div><div class="uni-name">University of Oxford</div><div class="uni-loc">📍 Oxford, UK</div><div class="uni-badges"><span class="uni-badge">AACSB</span><span class="uni-badge">EQUIS</span><span class="uni-badge">AMBA</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Triple Crown · Judge BS</div><div class="uni-name">University of Cambridge</div><div class="uni-loc">📍 Cambridge, UK</div><div class="uni-badges"><span class="uni-badge">AACSB</span><span class="uni-badge">EQUIS</span><span class="uni-badge">AMBA</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Triple Crown · QS MBA #8</div><div class="uni-name">Melbourne Business School</div><div class="uni-loc">📍 Melbourne, Australia</div><div class="uni-badges"><span class="uni-badge">AACSB</span><span class="uni-badge">EQUIS</span><span class="uni-badge">AMBA</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Triple Crown · Rotman</div><div class="uni-name">University of Toronto</div><div class="uni-loc">📍 Toronto, Canada</div><div class="uni-badges"><span class="uni-badge">AACSB</span><span class="uni-badge">EQUIS</span><span class="uni-badge">AMBA</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Triple Crown · HEC Paris</div><div class="uni-name">HEC Paris</div><div class="uni-loc">📍 Paris, France</div><div class="uni-badges"><span class="uni-badge">AACSB</span><span class="uni-badge">EQUIS</span><span class="uni-badge">AMBA</span></div></div>
+      </div>
+      <div class="ug-brochure-row">
+        <div class="ug-br-text"><h4>MBA & Triple Crown Schools Guide 2025</h4><p>Application timelines, GMAT score benchmarks, ROI analysis, and GES MBA placement success stories.</p></div>
+        <button class="btn-dl" onclick="openBrochureModal('MBA Triple Crown Schools Guide 2025')">📥 Download Free Guide</button>
+      </div>
+    </div>
+
+    <div id="ug-europe">
+      <div class="ug-intro"><p><strong style="color:var(--gold);">Public Universities in Europe</strong> offer world-class education at a fraction of the cost of English-speaking destinations. German public universities charge near-zero tuition even for international students. The EU's Bologna Process ensures degree comparability across all member states, making these degrees globally credible.</p></div>
+      <div class="uni-list">
+        <div class="uni-card"><div class="uni-rank">QS #37 Global</div><div class="uni-name">TU Munich</div><div class="uni-loc">📍 Munich, Germany</div><div class="uni-badges"><span class="uni-badge">Engineering</span><span class="uni-badge">Technology</span><span class="uni-badge">Free*</span></div></div>
+        <div class="uni-card"><div class="uni-rank">QS #87 Global</div><div class="uni-name">Heidelberg University</div><div class="uni-loc">📍 Heidelberg, Germany</div><div class="uni-badges"><span class="uni-badge">Medicine</span><span class="uni-badge">Sciences</span><span class="uni-badge">Free*</span></div></div>
+        <div class="uni-card"><div class="uni-rank">QS #47 Global</div><div class="uni-name">TU Delft</div><div class="uni-loc">📍 Delft, Netherlands</div><div class="uni-badges"><span class="uni-badge">Architecture</span><span class="uni-badge">Aerospace</span><span class="uni-badge">CS</span></div></div>
+        <div class="uni-card"><div class="uni-rank">QS #53 Global</div><div class="uni-name">University of Amsterdam</div><div class="uni-loc">📍 Amsterdam, Netherlands</div><div class="uni-badges"><span class="uni-badge">Social Sciences</span><span class="uni-badge">Business</span><span class="uni-badge">AI</span></div></div>
+        <div class="uni-card"><div class="uni-rank">QS #81 Global</div><div class="uni-name">University of Copenhagen</div><div class="uni-loc">📍 Copenhagen, Denmark</div><div class="uni-badges"><span class="uni-badge">Pharmacy</span><span class="uni-badge">Sciences</span><span class="uni-badge">Law</span></div></div>
+        <div class="uni-card"><div class="uni-rank">QS #114 Global</div><div class="uni-name">Trinity College Dublin</div><div class="uni-loc">📍 Dublin, Ireland</div><div class="uni-badges"><span class="uni-badge">Business</span><span class="uni-badge">Technology</span><span class="uni-badge">Literature</span></div></div>
+        <div class="uni-card"><div class="uni-rank">Sciences Po</div><div class="uni-name">Sciences Po Paris</div><div class="uni-loc">📍 Paris, France</div><div class="uni-badges"><span class="uni-badge">Politics</span><span class="uni-badge">Economics</span><span class="uni-badge">Int'l Affairs</span></div></div>
+        <div class="uni-card"><div class="uni-rank">QS #60 Global</div><div class="uni-name">LMU Munich</div><div class="uni-loc">📍 Munich, Germany</div><div class="uni-badges"><span class="uni-badge">Medicine</span><span class="uni-badge">Law</span><span class="uni-badge">Free*</span></div></div>
+      </div>
+      <div class="ug-brochure-row">
+        <div class="ug-br-text"><h4>Europe Study Guide 2025–26</h4><p>Country-by-country cost comparison, blocked account requirements, DAAD/Holland scholarships, and visa processes.</p></div>
+        <button class="btn-dl" onclick="openBrochureModal('Europe Public Universities Guide 2025–26')">📥 Download Free Guide</button>
+      </div>
+    </div>
+
+    <div id="ug-u15">
+      <div class="ug-intro"><p>The <strong style="color:var(--gold);">U15</strong> is a group of 15 leading Canadian research universities that account for 80% of all competitively awarded research funding in Canada. Degrees from U15 universities carry strong weight with the Canadian immigration system, increasing PGWP eligibility and Express Entry CRS score.</p></div>
+      <div class="uni-list">
+        <div class="uni-card"><div class="uni-rank">U15 · QS #21</div><div class="uni-name">University of Toronto</div><div class="uni-loc">📍 Toronto, Ontario</div><div class="uni-badges"><span class="uni-badge">Medicine</span><span class="uni-badge">Engineering</span><span class="uni-badge">Business</span></div></div>
+        <div class="uni-card"><div class="uni-rank">U15 · QS #34</div><div class="uni-name">University of British Columbia</div><div class="uni-loc">📍 Vancouver, BC</div><div class="uni-badges"><span class="uni-badge">Forestry</span><span class="uni-badge">Engineering</span><span class="uni-badge">Business</span></div></div>
+        <div class="uni-card"><div class="uni-rank">U15 · QS #31</div><div class="uni-name">McGill University</div><div class="uni-loc">📍 Montreal, Quebec</div><div class="uni-badges"><span class="uni-badge">Medicine</span><span class="uni-badge">Law</span><span class="uni-badge">Sciences</span></div></div>
+        <div class="uni-card"><div class="uni-rank">U15 · QS #112</div><div class="uni-name">University of Waterloo</div><div class="uni-loc">📍 Waterloo, Ontario</div><div class="uni-badges"><span class="uni-badge">Engineering</span><span class="uni-badge">Math</span><span class="uni-badge">Co-op</span></div></div>
+        <div class="uni-card"><div class="uni-rank">U15 · QS #172</div><div class="uni-name">University of Alberta</div><div class="uni-loc">📍 Edmonton, Alberta</div><div class="uni-badges"><span class="uni-badge">Engineering</span><span class="uni-badge">Sciences</span><span class="uni-badge">Oil & Gas</span></div></div>
+        <div class="uni-card"><div class="uni-rank">U15 · QS #298</div><div class="uni-name">Queen's University</div><div class="uni-loc">📍 Kingston, Ontario</div><div class="uni-badges"><span class="uni-badge">Commerce</span><span class="uni-badge">Law</span><span class="uni-badge">Engineering</span></div></div>
+      </div>
+      <div class="ug-brochure-row">
+        <div class="ug-br-text"><h4>Canada U15 & PGWP Guide 2025</h4><p>U15 admission requirements, PGWP eligibility rules, Express Entry CRS points, and co-op programme options.</p></div>
+        <button class="btn-dl" onclick="openBrochureModal('Canada U15 & PGWP Guide 2025')">📥 Download Free Guide</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════ COURSES ════════════ -->
+<section id="courses">
+  <div class="section-head">
+    <div><div class="eyebrow">Popular Programmes</div><h2>In-Demand Courses<br>Abroad in 2025–26</h2></div>
+    <p class="sub">Explore by field of study — each with destination match, average starting salary, and download links.</p>
+  </div>
+  <div class="course-tabs">
+    <button class="course-tab active" onclick="showCourse('all',this)">All Courses</button>
+    <button class="course-tab" onclick="showCourse('stem',this)">💻 STEM & Tech</button>
+    <button class="course-tab" onclick="showCourse('biz',this)">📊 Business & MBA</button>
+    <button class="course-tab" onclick="showCourse('health',this)">⚕️ Health & Medicine</button>
+    <button class="course-tab" onclick="showCourse('arts',this)">🎨 Arts & Social</button>
+  </div>
+  <div class="course-panels">
+    <div id="cp-all" class="active">
+      <div class="course-card reveal"><div class="cc-ico">💻</div><div class="cc-name">Computer Science & IT</div><p class="cc-desc">High demand globally with excellent salary prospects. Specialisations include AI, Cybersecurity, Cloud Computing, and Software Engineering.</p><div class="cc-tags"><span class="cc-tag">UK</span><span class="cc-tag">USA</span><span class="cc-tag">Canada</span><span class="cc-tag">Germany</span></div><div class="cc-salary">Avg Starting: S$6,500 – 10,000/month</div></div>
+      <div class="course-card reveal reveal-d1"><div class="cc-ico">📊</div><div class="cc-name">Business & MBA</div><p class="cc-desc">From 1-year UK MBAs to full 2-year US programmes. Triple Crown schools offer the best employer recognition globally.</p><div class="cc-tags"><span class="cc-tag">UK</span><span class="cc-tag">USA</span><span class="cc-tag">Australia</span></div><div class="cc-salary">Avg Starting: S$8,000 – 15,000/month</div></div>
+      <div class="course-card reveal reveal-d2"><div class="cc-ico">🔬</div><div class="cc-name">Data Science & AI</div><p class="cc-desc">One of the fastest-growing fields. STEM extension eligibility for OPT/PGWP. High placement rates at tech companies.</p><div class="cc-tags"><span class="cc-tag">USA</span><span class="cc-tag">Canada</span><span class="cc-tag">UK</span></div><div class="cc-salary">Avg Starting: S$7,000 – 12,000/month</div></div>
+      <div class="course-card reveal"><div class="cc-ico">⚙️</div><div class="cc-name">Engineering</div><p class="cc-desc">Mechanical, Civil, Electrical, Chemical, and Aerospace. Near-free at German public universities. Strong PR pathways.</p><div class="cc-tags"><span class="cc-tag">Germany</span><span class="cc-tag">Australia</span><span class="cc-tag">Canada</span></div><div class="cc-salary">Avg Starting: S$5,500 – 9,000/month</div></div>
+      <div class="course-card reveal reveal-d1"><div class="cc-ico">⚕️</div><div class="cc-name">Health Sciences</div><p class="cc-desc">Public Health, Nursing, Pharmacy, Healthcare Management. Strong visa and skilled migration pathways in Australia.</p><div class="cc-tags"><span class="cc-tag">Australia</span><span class="cc-tag">UK</span><span class="cc-tag">Canada</span></div><div class="cc-salary">Avg Starting: S$5,000 – 9,500/month</div></div>
+      <div class="course-card reveal reveal-d2"><div class="cc-ico">⚖️</div><div class="cc-name">Law</div><p class="cc-desc">LLB and LLM programmes from Russell Group and Ivy League institutions open doors to international legal careers.</p><div class="cc-tags"><span class="cc-tag">UK</span><span class="cc-tag">USA</span><span class="cc-tag">Australia</span></div><div class="cc-salary">Avg Starting: S$6,000 – 12,000/month</div></div>
+      <div class="course-card reveal"><div class="cc-ico">🎨</div><div class="cc-name">Design & Architecture</div><p class="cc-desc">Portfolio-based admission. UK's Central Saint Martins, RCA, and Dutch schools like TU Delft are world-leading.</p><div class="cc-tags"><span class="cc-tag">UK</span><span class="cc-tag">Netherlands</span><span class="cc-tag">USA</span></div><div class="cc-salary">Avg Starting: S$4,500 – 7,000/month</div></div>
+      <div class="course-card reveal reveal-d1"><div class="cc-ico">💹</div><div class="cc-name">Finance & Economics</div><p class="cc-desc">MSc Finance from London or New York opens doors to global banking, investment management, and fintech careers.</p><div class="cc-tags"><span class="cc-tag">UK</span><span class="cc-tag">USA</span><span class="cc-tag">Europe</span></div><div class="cc-salary">Avg Starting: S$7,000 – 14,000/month</div></div>
+    </div>
+    <div id="cp-stem">
+      <div class="course-card"><div class="cc-ico">💻</div><div class="cc-name">Computer Science</div><p class="cc-desc">Core CS, software engineering, systems design. Top destinations: MIT, CMU, Imperial, ETH Zürich, Waterloo.</p><div class="cc-tags"><span class="cc-tag">USA</span><span class="cc-tag">UK</span><span class="cc-tag">Canada</span></div><div class="cc-salary">Avg Starting: S$7,000 – 12,000/month</div></div>
+      <div class="course-card"><div class="cc-ico">🤖</div><div class="cc-name">Artificial Intelligence & ML</div><p class="cc-desc">Dedicated AI/ML programmes now offered at most top universities. Highest-demand field in 2025 globally.</p><div class="cc-tags"><span class="cc-tag">USA</span><span class="cc-tag">UK</span><span class="cc-tag">Germany</span></div><div class="cc-salary">Avg Starting: S$9,000 – 15,000/month</div></div>
+      <div class="course-card"><div class="cc-ico">🔐</div><div class="cc-name">Cybersecurity</div><p class="cc-desc">Critical skills shortage worldwide. Programmes at Carnegie Mellon, University of Edinburgh, Royal Holloway.</p><div class="cc-tags"><span class="cc-tag">USA</span><span class="cc-tag">UK</span></div><div class="cc-salary">Avg Starting: S$7,500 – 11,000/month</div></div>
+      <div class="course-card"><div class="cc-ico">⚙️</div><div class="cc-name">Mechanical Engineering</div><p class="cc-desc">Classic and always in demand. Near-free at TU Munich, RWTH Aachen. Strong in UK and Canadian schools too.</p><div class="cc-tags"><span class="cc-tag">Germany</span><span class="cc-tag">Canada</span><span class="cc-tag">UK</span></div><div class="cc-salary">Avg Starting: S$5,500 – 9,000/month</div></div>
+    </div>
+    <div id="cp-biz">
+      <div class="course-card"><div class="cc-ico">📊</div><div class="cc-name">Full-Time MBA</div><p class="cc-desc">2-year US-style MBA at Triple Crown schools. Strong ROI, world-class alumni networks, recruiter access.</p><div class="cc-tags"><span class="cc-tag">USA</span><span class="cc-tag">UK</span><span class="cc-tag">France</span></div><div class="cc-salary">Avg Starting: S$12,000 – 20,000/month</div></div>
+      <div class="course-card"><div class="cc-ico">📈</div><div class="cc-name">MSc Finance</div><p class="cc-desc">1-year programmes at LSE, Imperial, Oxford Said, NYU Stern. Top choice for banking and investment roles.</p><div class="cc-tags"><span class="cc-tag">UK</span><span class="cc-tag">USA</span></div><div class="cc-salary">Avg Starting: S$8,000 – 15,000/month</div></div>
+      <div class="course-card"><div class="cc-ico">💼</div><div class="cc-name">MSc Management</div><p class="cc-desc">Great for early-career students. Available at Russell Group and Go8 schools. 1-year UK option popular.</p><div class="cc-tags"><span class="cc-tag">UK</span><span class="cc-tag">Australia</span><span class="cc-tag">Germany</span></div><div class="cc-salary">Avg Starting: S$6,000 – 9,500/month</div></div>
+      <div class="course-card"><div class="cc-ico">🌐</div><div class="cc-name">International Business</div><p class="cc-desc">Cross-border business, global strategy, supply chain. Ideal for careers in MNCs, consulting, and trade.</p><div class="cc-tags"><span class="cc-tag">USA</span><span class="cc-tag">UK</span><span class="cc-tag">Netherlands</span></div><div class="cc-salary">Avg Starting: S$6,500 – 10,000/month</div></div>
+    </div>
+    <div id="cp-health">
+      <div class="course-card"><div class="cc-ico">🏥</div><div class="cc-name">Public Health (MPH)</div><p class="cc-desc">Top schools: Johns Hopkins, Harvard Chan, London School of Hygiene & Tropical Medicine, Melbourne.</p><div class="cc-tags"><span class="cc-tag">USA</span><span class="cc-tag">UK</span><span class="cc-tag">Australia</span></div><div class="cc-salary">Avg Starting: S$5,000 – 8,000/month</div></div>
+      <div class="course-card"><div class="cc-ico">💊</div><div class="cc-name">Pharmacy</div><p class="cc-desc">Strong demand in Australia, Canada, and UK. Pharmacy graduates often eligible for skilled migration PR routes.</p><div class="cc-tags"><span class="cc-tag">Australia</span><span class="cc-tag">Canada</span><span class="cc-tag">UK</span></div><div class="cc-salary">Avg Starting: S$5,500 – 8,500/month</div></div>
+      <div class="course-card"><div class="cc-ico">🧬</div><div class="cc-name">Biotechnology</div><p class="cc-desc">Fast-growing field post-COVID. Top schools: ETH Zürich, Imperial, MIT, Johns Hopkins. Strong research culture.</p><div class="cc-tags"><span class="cc-tag">Germany</span><span class="cc-tag">UK</span><span class="cc-tag">USA</span></div><div class="cc-salary">Avg Starting: S$6,000 – 9,000/month</div></div>
+    </div>
+    <div id="cp-arts">
+      <div class="course-card"><div class="cc-ico">⚖️</div><div class="cc-name">LLM International Law</div><p class="cc-desc">Offered at UCL, King's, NYU, Harvard Law, and other Ivy League schools. Opens international arbitration, human rights, and corporate law careers.</p><div class="cc-tags"><span class="cc-tag">UK</span><span class="cc-tag">USA</span></div><div class="cc-salary">Avg Starting: S$7,000 – 14,000/month</div></div>
+      <div class="course-card"><div class="cc-ico">🌐</div><div class="cc-name">International Relations</div><p class="cc-desc">Sciences Po, LSE, Georgetown, and Columbia are top picks. Leads to UN, diplomacy, NGO, and policy careers.</p><div class="cc-tags"><span class="cc-tag">France</span><span class="cc-tag">UK</span><span class="cc-tag">USA</span></div><div class="cc-salary">Avg Starting: S$4,500 – 7,500/month</div></div>
+      <div class="course-card"><div class="cc-ico">🎬</div><div class="cc-name">Media & Communications</div><p class="cc-desc">Columbia Journalism, USC's film school, London College of Communication. Strong portfolio-based pathways.</p><div class="cc-tags"><span class="cc-tag">USA</span><span class="cc-tag">UK</span><span class="cc-tag">Australia</span></div><div class="cc-salary">Avg Starting: S$4,000 – 7,000/month</div></div>
+    </div>
+  </div>
+  <div class="course-brochure-strip">
+    <div class="cb-text"><strong>Want a detailed course guide?</strong> Download our subject-specific brochures with admission requirements, top universities, and career outcomes.</div>
+    <div class="dl-group">
+      <button class="btn-dl-outline" onclick="openBrochureModal('STEM Courses Abroad Guide 2025')">📥 STEM Guide</button>
+      <button class="btn-dl-outline" onclick="openBrochureModal('Business & MBA Guide 2025')">📥 Business Guide</button>
+      <button class="btn-dl-outline" onclick="openBrochureModal('Health Sciences Abroad Guide 2025')">📥 Health Guide</button>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ LEGAL PROCESS ════════════ -->
+<section id="legal">
+  <div class="section-head">
+    <div><div class="eyebrow">Legal & Documentation</div><h2>Visa & Legal<br>Processes Explained</h2></div>
+    <p class="sub">Step-by-step legal documentation guide for each destination — including documents required, timelines, and fees.</p>
+  </div>
+  <div class="legal-tabs">
+    <button class="legal-tab active" onclick="showLegal('uk',this)">🇬🇧 UK Visa</button>
+    <button class="legal-tab" onclick="showLegal('usa',this)">🇺🇸 US F-1</button>
+    <button class="legal-tab" onclick="showLegal('canada',this)">🇨🇦 Canada Permit</button>
+    <button class="legal-tab" onclick="showLegal('australia',this)">🇦🇺 Australia Visa</button>
+    <button class="legal-tab" onclick="showLegal('germany',this)">🇩🇪 Germany Visa</button>
+  </div>
+  <div class="legal-panels">
+
+    <div id="lp-uk" class="active">
+      <div class="legal-steps">
+        <div class="ls"><div class="ls-num">01</div><div class="ls-body"><div class="ls-label">Step 1 — Before Applying</div><div class="ls-title">Obtain CAS from University</div><p class="ls-desc">Your Confirmation of Acceptance for Studies (CAS) is issued by your UK university once you accept an unconditional offer. The CAS number is essential for your visa application.</p><div class="ls-docs"><span class="ls-doc">Unconditional Offer Letter</span><span class="ls-doc">Passport Copy</span><span class="ls-doc">IELTS/UKVI Score</span></div></div></div>
+        <div class="ls"><div class="ls-num">02</div><div class="ls-body"><div class="ls-label">Step 2 — Financial Evidence</div><div class="ls-title">Prove Financial Maintenance</div><p class="ls-desc">You must show you have enough money to cover tuition fees and living costs. Funds must be held continuously in your account for 28 days prior to application.</p><div class="ls-docs"><span class="ls-doc">Bank Statements (28-day hold)</span><span class="ls-doc">Loan Sanction Letter</span><span class="ls-doc">Scholarship Letter</span></div></div></div>
+        <div class="ls"><div class="ls-num">03</div><div class="ls-body"><div class="ls-label">Step 3 — Online Application</div><div class="ls-title">Submit UK Visa Application</div><p class="ls-desc">Apply online via the UKVI portal. Pay the visa application fee (£490) and the Immigration Health Surcharge (£470/year of study).</p><div class="ls-docs"><span class="ls-doc">Completed Application Form</span><span class="ls-doc">Fee Payment Receipt</span><span class="ls-doc">IHS Payment</span></div></div></div>
+        <div class="ls"><div class="ls-num">04</div><div class="ls-body"><div class="ls-label">Step 4 — Biometrics</div><div class="ls-title">Biometrics Appointment at VFS</div><p class="ls-desc">Book and attend a biometrics appointment at a UKVI Visa Application Centre. In Singapore, this is through VFS Global. Bring all original documents.</p><div class="ls-docs"><span class="ls-doc">Passport (Original)</span><span class="ls-doc">IELTS Certificate</span><span class="ls-doc">Photograph</span></div></div></div>
+        <div class="ls"><div class="ls-num">05</div><div class="ls-body"><div class="ls-label">Step 5 — Decision</div><div class="ls-title">Visa Decision & Collection</div><p class="ls-desc">Standard processing: 3 weeks. Priority processing: 5 working days (extra fee). Once approved, you'll receive a vignette visa in your passport and collect your BRP card on arrival in the UK.</p><div class="ls-docs"><span class="ls-doc">BRP Card</span><span class="ls-doc">Entry Clearance Vignette</span></div></div></div>
+      </div>
+      <div class="legal-sidebar">
+        <div class="ls-info-box"><h4>Key Figures</h4>
+          <div class="ls-info-row"><span>Visa Fee</span><strong>£490</strong></div>
+          <div class="ls-info-row"><span>Health Surcharge</span><strong>£470/year</strong></div>
+          <div class="ls-info-row"><span>Processing Time</span><strong>3–6 weeks</strong></div>
+          <div class="ls-info-row"><span>Priority Service</span><strong>5 working days</strong></div>
+          <div class="ls-info-row"><span>Post-Study Work</span><strong>2 years (Graduate Route)</strong></div>
+        </div>
+        <div class="ls-info-box"><h4>Documents Checklist</h4>
+          <div class="ls-info-row"><span>Passport</span><strong>Original + Copy</strong></div>
+          <div class="ls-info-row"><span>CAS Number</span><strong>From University</strong></div>
+          <div class="ls-info-row"><span>IELTS/UKVI</span><strong>6.0+ Overall</strong></div>
+          <div class="ls-info-row"><span>Bank Funds</span><strong>28-Day Hold Rule</strong></div>
+          <div class="ls-info-row"><span>TB Test</span><strong>Required from Singapore</strong></div>
+        </div>
+        <div class="ls-dl-box">
+          <h4>UK Visa Checklist PDF</h4>
+          <p>Complete document-by-document checklist for UK Student Visa from Singapore</p>
+          <button class="btn-dl" onclick="openBrochureModal('UK Student Visa Checklist 2025')">📥 Free Download</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="lp-usa">
+      <div class="legal-steps">
+        <div class="ls"><div class="ls-num">01</div><div class="ls-body"><div class="ls-label">Step 1</div><div class="ls-title">Receive I-20 Form from University</div><p class="ls-desc">After accepting your admission offer and paying an enrolment deposit, your US university issues the I-20 form — a Certificate of Eligibility required for your F-1 visa application.</p><div class="ls-docs"><span class="ls-doc">Acceptance Letter</span><span class="ls-doc">Financial Proof</span><span class="ls-doc">Enrolment Deposit</span></div></div></div>
+        <div class="ls"><div class="ls-num">02</div><div class="ls-body"><div class="ls-label">Step 2</div><div class="ls-title">Pay SEVIS Fee</div><p class="ls-desc">Pay the SEVIS I-901 fee of $350 online at fmjfee.com before scheduling your visa appointment. Keep the receipt — it's required for your interview.</p><div class="ls-docs"><span class="ls-doc">SEVIS Fee Receipt</span><span class="ls-doc">I-20 Form</span></div></div></div>
+        <div class="ls"><div class="ls-num">03</div><div class="ls-body"><div class="ls-label">Step 3</div><div class="ls-title">Complete DS-160 Form</div><p class="ls-desc">Fill in the Non-Immigrant Visa Application (DS-160) online. This is a detailed form covering your personal background, travel history, and study intentions.</p><div class="ls-docs"><span class="ls-doc">DS-160 Confirmation Page</span><span class="ls-doc">Photograph</span></div></div></div>
+        <div class="ls"><div class="ls-num">04</div><div class="ls-body"><div class="ls-label">Step 4</div><div class="ls-title">Embassy Interview at US Embassy Singapore</div><p class="ls-desc">Book and attend your F-1 visa interview at the US Embassy on Napier Road, Singapore. Be prepared to clearly articulate your study plans and intent to return home after studies.</p><div class="ls-docs"><span class="ls-doc">DS-160</span><span class="ls-doc">I-20</span><span class="ls-doc">SEVIS Receipt</span><span class="ls-doc">Bank Statements</span><span class="ls-doc">Academic Transcripts</span></div></div></div>
+        <div class="ls"><div class="ls-num">05</div><div class="ls-body"><div class="ls-label">Step 5</div><div class="ls-title">Visa Approved & Arrival</div><p class="ls-desc">Once approved, your visa is stamped in your passport. You can enter the US up to 30 days before your programme start date. You receive your I-20 card on arrival at the port of entry.</p><div class="ls-docs"><span class="ls-doc">F-1 Visa Stamp</span><span class="ls-doc">I-20</span><span class="ls-doc">Passport</span></div></div></div>
+      </div>
+      <div class="legal-sidebar">
+        <div class="ls-info-box"><h4>Key Figures</h4>
+          <div class="ls-info-row"><span>SEVIS Fee</span><strong>$350</strong></div>
+          <div class="ls-info-row"><span>Visa Application Fee</span><strong>$160 (MRV Fee)</strong></div>
+          <div class="ls-info-row"><span>Processing Time</span><strong>3–4 months (incl. wait)</strong></div>
+          <div class="ls-info-row"><span>OPT Work Rights</span><strong>12–36 months</strong></div>
+          <div class="ls-info-row"><span>Interview Required</span><strong>Yes (Embassy)</strong></div>
+        </div>
+        <div class="ls-dl-box">
+          <h4>US F-1 Visa Checklist</h4>
+          <p>Complete document checklist + interview tips for F-1 visa from Singapore</p>
+          <button class="btn-dl" onclick="openBrochureModal('US F-1 Visa Guide & Checklist 2025')">📥 Free Download</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="lp-canada">
+      <div class="legal-steps">
+        <div class="ls"><div class="ls-num">01</div><div class="ls-body"><div class="ls-label">Step 1</div><div class="ls-title">Receive Letter of Acceptance</div><p class="ls-desc">Receive and accept your official Letter of Acceptance (LOA) from a Designated Learning Institution (DLI) in Canada. All major universities are DLIs.</p><div class="ls-docs"><span class="ls-doc">Letter of Acceptance (LOA)</span><span class="ls-doc">DLI Number</span></div></div></div>
+        <div class="ls"><div class="ls-num">02</div><div class="ls-body"><div class="ls-label">Step 2</div><div class="ls-title">Create IRCC Account & Apply Online</div><p class="ls-desc">Create an account on the IRCC portal and submit your Study Permit application. Pay the CAD $150 application fee. Submit biometrics through VFS Global in Singapore.</p><div class="ls-docs"><span class="ls-doc">Passport</span><span class="ls-doc">Academic Records</span><span class="ls-doc">Financial Proof (GIC/Bank)</span><span class="ls-doc">LOA</span></div></div></div>
+        <div class="ls"><div class="ls-num">03</div><div class="ls-body"><div class="ls-label">Step 3</div><div class="ls-title">Provide Financial Proof</div><p class="ls-desc">Show you can cover first year tuition + CAD $10,000 living expenses. Options include GIC (Guaranteed Investment Certificate), bank statements, or education loan letter.</p><div class="ls-docs"><span class="ls-doc">GIC Certificate OR</span><span class="ls-doc">Bank Statements (3 months)</span><span class="ls-doc">Loan Sanction Letter</span></div></div></div>
+        <div class="ls"><div class="ls-num">04</div><div class="ls-body"><div class="ls-label">Step 4</div><div class="ls-title">Medical Exam (if required)</div><p class="ls-desc">A medical examination by a designated physician may be required depending on your country of residence. GES will advise if this applies to you based on your profile.</p><div class="ls-docs"><span class="ls-doc">IME Upfront (recommended)</span></div></div></div>
+        <div class="ls"><div class="ls-num">05</div><div class="ls-body"><div class="ls-label">Step 5</div><div class="ls-title">Permit Approved — Port of Entry Letter</div><p class="ls-desc">Once approved, you receive an Approval-in-Principle letter and a Single Journey Travel Document. Your actual Study Permit is issued at the Canadian port of entry upon arrival.</p><div class="ls-docs"><span class="ls-doc">Port of Entry Letter</span><span class="ls-doc">Passport</span><span class="ls-doc">LOA</span></div></div></div>
+      </div>
+      <div class="legal-sidebar">
+        <div class="ls-info-box"><h4>Key Figures</h4>
+          <div class="ls-info-row"><span>Study Permit Fee</span><strong>CAD $150</strong></div>
+          <div class="ls-info-row"><span>Biometrics Fee</span><strong>CAD $85</strong></div>
+          <div class="ls-info-row"><span>Processing Time</span><strong>8–12 weeks</strong></div>
+          <div class="ls-info-row"><span>GIC Requirement</span><strong>CAD $10,000</strong></div>
+          <div class="ls-info-row"><span>PGWP After Graduation</span><strong>Up to 3 years</strong></div>
+        </div>
+        <div class="ls-dl-box">
+          <h4>Canada Study Permit Guide</h4>
+          <p>Full checklist, GIC options, biometrics process, and PGWP eligibility explained</p>
+          <button class="btn-dl" onclick="openBrochureModal('Canada Study Permit Guide 2025')">📥 Free Download</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="lp-australia">
+      <div class="legal-steps">
+        <div class="ls"><div class="ls-num">01</div><div class="ls-body"><div class="ls-label">Step 1</div><div class="ls-title">Obtain CoE from University</div><p class="ls-desc">Once you accept your university offer and pay the deposit, you receive a Confirmation of Enrolment (CoE) — the key document needed for your Student Visa (Subclass 500) application.</p><div class="ls-docs"><span class="ls-doc">Offer Letter</span><span class="ls-doc">Tuition Fee Deposit Receipt</span><span class="ls-doc">CoE from University</span></div></div></div>
+        <div class="ls"><div class="ls-num">02</div><div class="ls-body"><div class="ls-label">Step 2</div><div class="ls-title">Purchase OSHC Health Insurance</div><p class="ls-desc">Overseas Student Health Cover (OSHC) is mandatory for the entire duration of your visa. This must be purchased before applying for the visa. Cost: ~AUD $600–700/year.</p><div class="ls-docs"><span class="ls-doc">OSHC Certificate</span><span class="ls-doc">Policy Number</span></div></div></div>
+        <div class="ls"><div class="ls-num">03</div><div class="ls-body"><div class="ls-label">Step 3</div><div class="ls-title">Apply via ImmiAccount Portal</div><p class="ls-desc">Create an ImmiAccount and submit your Student Visa (Subclass 500) application online. Pay the AUD $710 visa application fee and upload all supporting documents.</p><div class="ls-docs"><span class="ls-doc">CoE</span><span class="ls-doc">OSHC Certificate</span><span class="ls-doc">Financial Evidence</span><span class="ls-doc">Academic Transcripts</span><span class="ls-doc">IELTS/PTE Score</span></div></div></div>
+        <div class="ls"><div class="ls-num">04</div><div class="ls-body"><div class="ls-label">Step 4</div><div class="ls-title">Provide Genuine Temporary Entrant (GTE)</div><p class="ls-desc">Australia requires a GTE statement demonstrating you genuinely intend to stay temporarily for study. GES helps craft a compelling GTE statement to avoid refusals.</p><div class="ls-docs"><span class="ls-doc">GTE Statement</span><span class="ls-doc">Study Reasons Statement</span></div></div></div>
+        <div class="ls"><div class="ls-num">05</div><div class="ls-body"><div class="ls-label">Step 5</div><div class="ls-title">Visa Granted — Subclass 500</div><p class="ls-desc">Typically processed within 4–6 weeks. The visa is granted as an electronic grant (no stamp). Post-study, apply for the Temporary Graduate Visa (Subclass 485) for 2–4 years of work rights.</p><div class="ls-docs"><span class="ls-doc">Visa Grant Letter</span><span class="ls-doc">Grant Number</span></div></div></div>
+      </div>
+      <div class="legal-sidebar">
+        <div class="ls-info-box"><h4>Key Figures</h4>
+          <div class="ls-info-row"><span>Visa Application Fee</span><strong>AUD $710</strong></div>
+          <div class="ls-info-row"><span>OSHC (per year)</span><strong>AUD $600 – $700</strong></div>
+          <div class="ls-info-row"><span>Processing Time</span><strong>4–6 weeks</strong></div>
+          <div class="ls-info-row"><span>Work Rights</span><strong>48 hrs / fortnight</strong></div>
+          <div class="ls-info-row"><span>Post-Study (485)</span><strong>2–4 years</strong></div>
+        </div>
+        <div class="ls-dl-box">
+          <h4>Australia Visa 500 Checklist</h4>
+          <p>Complete CoE-to-grant guide with GTE statement tips and 485 pathway explained</p>
+          <button class="btn-dl" onclick="openBrochureModal('Australia Student Visa 500 Checklist 2025')">📥 Free Download</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="lp-germany">
+      <div class="legal-steps">
+        <div class="ls"><div class="ls-num">01</div><div class="ls-body"><div class="ls-label">Step 1</div><div class="ls-title">Get University Admission Letter</div><p class="ls-desc">Apply to a German university. Many public universities in Germany are free for international students (only a semester fee of ~€300 applies). Receive your official Zulassungsbescheid (admission letter).</p><div class="ls-docs"><span class="ls-doc">Zulassungsbescheid</span><span class="ls-doc">German Language Proof (if needed)</span><span class="ls-doc">APS Certificate (required from India)</span></div></div></div>
+        <div class="ls"><div class="ls-num">02</div><div class="ls-body"><div class="ls-label">Step 2</div><div class="ls-title">Open a Blocked Account (Sperrkonto)</div><p class="ls-desc">Open a blocked account (Sperrkonto) with a German bank such as Deutsche Bank or Fintiba with a minimum of €11,208 (2024 amount). This proves financial ability to sustain yourself in Germany.</p><div class="ls-docs"><span class="ls-doc">Blocked Account Certificate</span><span class="ls-doc">Bank Transfer Proof</span></div></div></div>
+        <div class="ls"><div class="ls-num">03</div><div class="ls-body"><div class="ls-label">Step 3</div><div class="ls-title">Apply at German Embassy Singapore</div><p class="ls-desc">Apply for a National Visa (Type D) at the German Embassy in Singapore. Book your appointment well in advance — 8–12 weeks wait time. Submit all documents in person or by post.</p><div class="ls-docs"><span class="ls-doc">Visa Application Form</span><span class="ls-doc">Passport</span><span class="ls-doc">Blocked Account Certificate</span><span class="ls-doc">Admission Letter</span><span class="ls-doc">Language Certificate</span></div></div></div>
+        <div class="ls"><div class="ls-num">04</div><div class="ls-body"><div class="ls-label">Step 4</div><div class="ls-title">Visa Granted — Register in Germany</div><p class="ls-desc">Once in Germany, you must register at the local registration office (Einwohnermeldeamt) within 2 weeks. Apply for your full Residence Permit (Aufenthaltstitel) at the Ausländerbehörde.</p><div class="ls-docs"><span class="ls-doc">Anmeldung (Registration)</span><span class="ls-doc">Aufenthaltstitel</span></div></div></div>
+      </div>
+      <div class="legal-sidebar">
+        <div class="ls-info-box"><h4>Key Figures</h4>
+          <div class="ls-info-row"><span>Visa Fee</span><strong>€75</strong></div>
+          <div class="ls-info-row"><span>Blocked Account</span><strong>€11,208 required</strong></div>
+          <div class="ls-info-row"><span>Processing Time</span><strong>8–16 weeks</strong></div>
+          <div class="ls-info-row"><span>Tuition (Public)</span><strong>~€0 (+ semester fee)</strong></div>
+          <div class="ls-info-row"><span>Post-Study Job Seeker</span><strong>18 months</strong></div>
+        </div>
+        <div class="ls-dl-box">
+          <h4>Germany Student Visa Guide</h4>
+          <p>Blocked account setup, APS certificate process, and job-seeker visa explained</p>
+          <button class="btn-dl" onclick="openBrochureModal('Germany Student Visa Guide 2025')">📥 Free Download</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════ SERVICES ════════════ -->
+<section id="services">
+  <div class="section-head">
+    <div><div class="eyebrow">Our Services</div><h2>Everything You Need,<br>Under One Roof</h2></div>
+    <p class="sub">From the first spark of ambition to settling into your new campus — we handle every detail of your international education journey.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card reveal"><div class="svc-step">Service 01</div><span class="svc-ico">🎯</span><div class="svc-title">Profile Evaluation & University Shortlisting</div><p class="svc-desc">We begin with a thorough analysis of your academic background, test scores, work experience, and career goals.</p><ul class="svc-pts"><li>Academic profile assessment</li><li>Personalised university matching</li><li>Shortlist of 8–12 universities (reach/match/safe)</li><li>Career-aligned recommendations</li></ul></div>
+    <div class="svc-card reveal reveal-d1"><div class="svc-step">Service 02</div><span class="svc-ico">✍️</span><div class="svc-title">SOP & Application Writing</div><p class="svc-desc">Compelling applications that stand out to admissions committees at top universities worldwide.</p><ul class="svc-pts"><li>Statement of Purpose (SOP)</li><li>Letters of Recommendation (LOR)</li><li>Resume & CV preparation</li><li>Application portal management</li></ul></div>
+    <div class="svc-card reveal reveal-d2"><div class="svc-step">Service 03</div><span class="svc-ico">🗂️</span><div class="svc-title">Legal Documentation</div><p class="svc-desc">Meticulous preparation of all legal documents for university applications and visa submissions.</p><ul class="svc-pts"><li>Transcript & certificate attestation</li><li>Apostille & legalisation</li><li>Police clearance guidance</li><li>Document checklist & tracking</li></ul></div>
+    <div class="svc-card reveal reveal-d3"><div class="svc-step">Service 04</div><span class="svc-ico">✈️</span><div class="svc-title">Visa Application & Coaching</div><p class="svc-desc">Expert visa guidance with a 98% approval rate across all study destinations.</p><ul class="svc-pts"><li>Student visa documentation prep</li><li>Financial documents review</li><li>Embassy interview coaching</li><li>Biometrics appointment booking</li></ul></div>
+    <div class="svc-card reveal"><div class="svc-step">Service 05</div><span class="svc-ico">💰</span><div class="svc-title">Education Loan Assistance</div><p class="svc-desc">We connect you with the best loan options suited to your destination and financial profile.</p><ul class="svc-pts"><li>Secured & unsecured loan guidance</li><li>Loan eligibility assessment</li><li>Application process support</li><li>Multiple bank tie-ups</li></ul></div>
+    <div class="svc-card reveal reveal-d1"><div class="svc-step">Service 06</div><span class="svc-ico">💱</span><div class="svc-title">Forex & Remittance</div><p class="svc-desc">Competitive exchange rates and hassle-free international remittance for tuition and living expenses.</p><ul class="svc-pts"><li>Competitive exchange rates</li><li>Tuition fee remittance</li><li>SWIFT transfer assistance</li><li>Forex card guidance</li></ul></div>
+    <div class="svc-card reveal reveal-d2"><div class="svc-step">Service 07</div><span class="svc-ico">🎓</span><div class="svc-title">Scholarship Guidance</div><p class="svc-desc">We identify and help you apply for scholarships, grants, and financial aid opportunities.</p><ul class="svc-pts"><li>Merit & need-based scholarships</li><li>Government scholarships</li><li>University-specific awards</li><li>Scholarship essay support</li></ul></div>
+    <div class="svc-card reveal reveal-d3"><div class="svc-step">Service 08</div><span class="svc-ico">🏠</span><div class="svc-title">Pre-Departure & Accommodation</div><p class="svc-desc">Comprehensive orientation and accommodation guidance for a smooth transition abroad.</p><ul class="svc-pts"><li>Accommodation options guidance</li><li>Cultural orientation briefing</li><li>Banking & SIM card setup tips</li><li>Airport & arrival coordination</li></ul></div>
+  </div>
+</section>
+
+<!-- ════════════ EXAMS ════════════ -->
+<section id="exams">
+  <div class="section-head">
+    <div><div class="eyebrow" style="color:var(--gold);">English & Entrance Exams</div><h2 class="light">Exam Guidance &<br>Preparation Strategy</h2></div>
+    <p class="sub light">We help you choose the right exam for your destination, understand the format, and plan your preparation timeline.</p>
+  </div>
+  <div class="exams-grid">
+    <div class="exam-card reveal"><div class="exam-top"><div class="exam-name">IELTS</div><div class="exam-dest"><span class="exam-d">UK</span><span class="exam-d">Canada</span><span class="exam-d">Australia</span></div></div><div class="exam-full">International English Language Testing System</div><p class="exam-desc">The gold standard for UK, Canada, and Australia visa applications. Required for student visa in most destinations. Academic module for university admission.</p><div class="exam-rows"><div class="exam-row"><strong>Required Score:</strong> 6.0–7.0 band overall</div><div class="exam-row"><strong>Format:</strong> Academic / General Training</div><div class="exam-row"><strong>Validity:</strong> 2 years</div></div></div>
+    <div class="exam-card reveal reveal-d1"><div class="exam-top"><div class="exam-name">TOEFL</div><div class="exam-dest"><span class="exam-d">USA</span><span class="exam-d">Canada</span></div></div><div class="exam-full">Test of English as a Foreign Language</div><p class="exam-desc">Preferred by US universities. iBT (internet-based) format. Strong evidence of academic English ability for North America-bound students.</p><div class="exam-rows"><div class="exam-row"><strong>Required Score:</strong> 80–100 iBT</div><div class="exam-row"><strong>Format:</strong> Internet-Based (iBT)</div><div class="exam-row"><strong>Validity:</strong> 2 years</div></div></div>
+    <div class="exam-card reveal reveal-d2"><div class="exam-top"><div class="exam-name">PTE</div><div class="exam-dest"><span class="exam-d">Australia</span><span class="exam-d">UK</span></div></div><div class="exam-full">Pearson Test of English Academic</div><p class="exam-desc">Fully computer-based. Results within 48 hours. Widely accepted in Australia, UK, and Canada. Great for tech-savvy students who prefer objective marking.</p><div class="exam-rows"><div class="exam-row"><strong>Required Score:</strong> 50–65 typically</div><div class="exam-row"><strong>Format:</strong> Computer-Based</div><div class="exam-row"><strong>Validity:</strong> 2 years</div></div></div>
+    <div class="exam-card reveal"><div class="exam-top"><div class="exam-name">GRE</div><div class="exam-dest"><span class="exam-d">USA</span><span class="exam-d">Canada</span></div></div><div class="exam-full">Graduate Record Examination</div><p class="exam-desc">Required for postgraduate programmes in the USA and Canada — especially in sciences, engineering, and liberal arts. Now available in a shorter format.</p><div class="exam-rows"><div class="exam-row"><strong>Required Score:</strong> 300+ (Verbal + Quant)</div><div class="exam-row"><strong>Format:</strong> Computer-adaptive</div><div class="exam-row"><strong>Validity:</strong> 5 years</div></div></div>
+    <div class="exam-card reveal reveal-d1"><div class="exam-top"><div class="exam-name">GMAT</div><div class="exam-dest"><span class="exam-d">Global MBA</span></div></div><div class="exam-full">Graduate Management Admission Test</div><p class="exam-desc">The primary test for MBA admissions at Triple Crown business schools. Tests analytical writing, data insights, and quantitative reasoning.</p><div class="exam-rows"><div class="exam-row"><strong>Required Score:</strong> 600–700+</div><div class="exam-row"><strong>Format:</strong> Computer-adaptive (GMAT Focus)</div><div class="exam-row"><strong>Validity:</strong> 5 years</div></div></div>
+    <div class="exam-card reveal reveal-d2"><div class="exam-top"><div class="exam-name">SAT</div><div class="exam-dest"><span class="exam-d">USA</span></div></div><div class="exam-full">Scholastic Assessment Test</div><p class="exam-desc">Required for undergraduate admissions in the USA. Fully digital from 2024. Tests Math and Evidence-Based Reading & Writing.</p><div class="exam-rows"><div class="exam-row"><strong>Required Score:</strong> 1200–1500+</div><div class="exam-row"><strong>Format:</strong> Digital (2024+)</div><div class="exam-row"><strong>Validity:</strong> No expiry</div></div></div>
+  </div>
+</section>
+
+<!-- ════════════ SCHOLARSHIPS ════════════ -->
+<section id="scholarships">
+  <div class="section-head">
+    <div><div class="eyebrow">Financial Aid</div><h2>Scholarships &<br>Funding Opportunities</h2></div>
+    <a class="see-all" href="#brochures">Download Scholarship Guide</a>
+  </div>
+  <div class="schol-grid">
+    <div class="schol-card reveal"><div class="schol-flag">🇬🇧 United Kingdom</div><div class="schol-name">Chevening Scholarship</div><div class="schol-amt">Full funding — tuition + living + flights</div><p class="schol-desc">UK government's flagship global scholarship for outstanding emerging leaders. Covers full tuition, monthly stipend, and return airfare.</p><a class="schol-link" href="#brochures" onclick="openBrochureModal('Chevening Scholarship Guide 2025')">Download Guide</a></div>
+    <div class="schol-card reveal reveal-d1"><div class="schol-flag">🇺🇸 United States</div><div class="schol-name">Fulbright Program</div><div class="schol-amt">Full funding — US government sponsored</div><p class="schol-desc">Prestigious exchange programme offering full funding for graduate study, research, and teaching in the USA. Highly competitive and globally recognised.</p><a class="schol-link" href="#brochures" onclick="openBrochureModal('Fulbright Scholarship Guide 2025')">Download Guide</a></div>
+    <div class="schol-card reveal reveal-d2"><div class="schol-flag">🇨🇦 Canada</div><div class="schol-name">Vanier Canada Graduate Scholarship</div><div class="schol-amt">CAD $50,000/year for 3 years</div><p class="schol-desc">Canada's most prestigious doctoral scholarship, awarded to world-class students who demonstrate leadership and academic excellence.</p><a class="schol-link" href="#brochures" onclick="openBrochureModal('Canada Scholarships Guide 2025')">Download Guide</a></div>
+    <div class="schol-card reveal"><div class="schol-flag">🇦🇺 Australia</div><div class="schol-name">Australia Awards</div><div class="schol-amt">Full tuition + establishment allowance</div><p class="schol-desc">Australian government scholarships covering full tuition, travel, and living costs for eligible international students from developing countries.</p><a class="schol-link" href="#brochures" onclick="openBrochureModal('Australia Scholarships Guide 2025')">Download Guide</a></div>
+    <div class="schol-card reveal reveal-d1"><div class="schol-flag">🇩🇪 Germany</div><div class="schol-name">DAAD Scholarship</div><div class="schol-amt">€750 – €1,200 / month stipend</div><p class="schol-desc">Germany's most prestigious academic exchange programme, supporting international students for study and research at German universities of excellence.</p><a class="schol-link" href="#brochures" onclick="openBrochureModal('DAAD Scholarship Guide 2025')">Download Guide</a></div>
+    <div class="schol-card reveal reveal-d2"><div class="schol-flag">🇳🇱 Netherlands</div><div class="schol-name">Holland Scholarship</div><div class="schol-amt">€5,000 one-time award</div><p class="schol-desc">Offered by Dutch universities and the Ministry of Education for outstanding international students from outside the EEA region, including Singapore.</p><a class="schol-link" href="#brochures" onclick="openBrochureModal('Holland Scholarship Guide 2025')">Download Guide</a></div>
+  </div>
+</section>
+
+<!-- ════════════ BROCHURES ════════════ -->
+<section id="brochures">
+  <div class="section-head">
+    <div><div class="eyebrow">Downloads</div><h2>Free Guides &<br>Brochure Downloads</h2></div>
+    <p class="sub">All guides are free. Enter your name and email to receive your personalised brochure instantly.</p>
+  </div>
+  <div class="brochure-grid">
+    <div class="brochure-card reveal"><div class="bc-head"><div class="bc-ico">🇬🇧</div><div><div class="bc-title">UK Study Guide 2025–26</div><div class="bc-sub">Student Visa · Universities · Costs</div></div></div><p class="bc-desc">Complete guide to studying in the UK — Russell Group universities, tuition costs, Graduate Route Visa, IELTS requirements, and scholarship opportunities.</p><div class="bc-meta"><span class="bc-pages">📄 24 pages · PDF</span><button class="btn-dl-sm" onclick="openBrochureModal('UK Study Guide 2025–26')">📥 Download</button></div></div>
+    <div class="brochure-card reveal reveal-d1"><div class="bc-head"><div class="bc-ico">🇺🇸</div><div><div class="bc-title">USA Study Guide 2025–26</div><div class="bc-sub">F-1 Visa · Ivy League · OPT</div></div></div><p class="bc-desc">Comprehensive guide to US universities, F-1 visa process, DS-160, SEVIS fee, OPT/STEM OPT work rights, and Fulbright scholarship tips.</p><div class="bc-meta"><span class="bc-pages">📄 28 pages · PDF</span><button class="btn-dl-sm" onclick="openBrochureModal('USA Study Guide 2025–26')">📥 Download</button></div></div>
+    <div class="brochure-card reveal reveal-d2"><div class="bc-head"><div class="bc-ico">🇨🇦</div><div><div class="bc-title">Canada Study Guide 2025–26</div><div class="bc-sub">Study Permit · PGWP · PR Pathway</div></div></div><p class="bc-desc">Everything about Canada — U15 universities, study permit process, GIC requirements, PGWP eligibility, and Express Entry pathway to PR.</p><div class="bc-meta"><span class="bc-pages">📄 26 pages · PDF</span><button class="btn-dl-sm" onclick="openBrochureModal('Canada Study Guide 2025–26')">📥 Download</button></div></div>
+    <div class="brochure-card reveal"><div class="bc-head"><div class="bc-ico">🇦🇺</div><div><div class="bc-title">Australia Study Guide 2025–26</div><div class="bc-sub">Visa 500 · 485 Work Visa · Go8</div></div></div><p class="bc-desc">Group of Eight universities, Student Visa (500), OSHC, GTE statement guide, 485 post-study work visa, and skilled migration pathway.</p><div class="bc-meta"><span class="bc-pages">📄 22 pages · PDF</span><button class="btn-dl-sm" onclick="openBrochureModal('Australia Study Guide 2025–26')">📥 Download</button></div></div>
+    <div class="brochure-card reveal reveal-d1"><div class="bc-head"><div class="bc-ico">🌍</div><div><div class="bc-title">Europe Study Guide 2025–26</div><div class="bc-sub">Germany · Netherlands · Ireland</div></div></div><p class="bc-desc">Free tuition at German public universities, blocked account setup, DAAD & Holland scholarships, and English-taught programme listings across Europe.</p><div class="bc-meta"><span class="bc-pages">📄 30 pages · PDF</span><button class="btn-dl-sm" onclick="openBrochureModal('Europe Study Guide 2025–26')">📥 Download</button></div></div>
+    <div class="brochure-card reveal reveal-d2"><div class="bc-head"><div class="bc-ico">💼</div><div><div class="bc-title">MBA & Business Schools Guide</div><div class="bc-sub">Triple Crown · Ivy · Rankings</div></div></div><p class="bc-desc">Triple Crown business schools, MBA application timelines, GMAT benchmarks, ROI analysis, and placement success stories from GES students.</p><div class="bc-meta"><span class="bc-pages">📄 20 pages · PDF</span><button class="btn-dl-sm" onclick="openBrochureModal('MBA & Business Schools Guide 2025')">📥 Download</button></div></div>
+    <div class="brochure-card reveal"><div class="bc-head"><div class="bc-ico">📝</div><div><div class="bc-title">SOP Writing Masterclass</div><div class="bc-sub">Templates · Examples · Tips</div></div></div><p class="bc-desc">How to write a winning Statement of Purpose — structure, do's and don'ts, examples from successful GES applicants, and university-specific tips.</p><div class="bc-meta"><span class="bc-pages">📄 18 pages · PDF</span><button class="btn-dl-sm" onclick="openBrochureModal('SOP Writing Masterclass Guide 2025')">📥 Download</button></div></div>
+    <div class="brochure-card reveal reveal-d1"><div class="bc-head"><div class="bc-ico">💰</div><div><div class="bc-title">Scholarship Guide 2025–26</div><div class="bc-sub">All Destinations · All Levels</div></div></div><p class="bc-desc">Complete scholarship database across UK, USA, Canada, Australia, and Europe — eligibility, application deadlines, essay tips, and GES support.</p><div class="bc-meta"><span class="bc-pages">📄 32 pages · PDF</span><button class="btn-dl-sm" onclick="openBrochureModal('Scholarship Guide 2025–26 — All Destinations')">📥 Download</button></div></div>
+  </div>
+</section>
+
+<!-- ════════════ PROCESS ════════════ -->
+<section id="process">
+  <div class="section-head">
+    <div><div class="eyebrow" style="color:var(--gold);">How It Works</div><h2 class="light">Your Journey<br>With GES</h2></div>
+    <p class="sub light">A clear, transparent roadmap so you always know what comes next — and what we're doing behind the scenes for you.</p>
+  </div>
+  <div class="process-wrap">
+    <div class="ps reveal"><div class="ps-circ">01</div><div class="ps-body"><div class="ps-when">Week 1</div><div class="ps-title">Free Consultation & Profile Assessment</div><p class="ps-desc">A detailed 1-on-1 session to understand your academic background, career aspirations, preferred destinations, and budget. No obligation — just honest expert advice.</p></div></div>
+    <div class="ps reveal"><div class="ps-circ">02</div><div class="ps-body"><div class="ps-when">Week 2–3</div><div class="ps-title">University Shortlisting & Programme Selection</div><p class="ps-desc">A personalised shortlist of 8–12 universities — aspirational, match, and safe options — with rankings, fees, intake dates, and career outcome breakdowns.</p></div></div>
+    <div class="ps reveal"><div class="ps-circ">03</div><div class="ps-body"><div class="ps-when">Week 4–8</div><div class="ps-title">Application Preparation & Submission</div><p class="ps-desc">We craft compelling SOPs, obtain strong LORs, prepare your CV, and manage all application submissions — ensuring every deadline is met and every document is perfect.</p><div class="ps-docs"><span class="ps-doc">SOP Draft & Review</span><span class="ps-doc">CV / Resume</span><span class="ps-doc">LOR Strategy</span><span class="ps-doc">Transcript Preparation</span></div></div></div>
+    <div class="ps reveal"><div class="ps-circ">04</div><div class="ps-body"><div class="ps-when">Month 3–4</div><div class="ps-title">Offer Received & Financial Planning</div><p class="ps-desc">Once you receive offer letters, we help you evaluate and accept the best option, guide your education loan applications, scholarship applications, and forex arrangements.</p><div class="ps-docs"><span class="ps-doc">Offer Comparison</span><span class="ps-doc">Loan Application</span><span class="ps-doc">Forex Setup</span></div></div></div>
+    <div class="ps reveal"><div class="ps-circ">05</div><div class="ps-body"><div class="ps-when">Month 4–5</div><div class="ps-title">Visa Application & Embassy Preparation</div><p class="ps-desc">Our visa specialists prepare your entire file and coach you thoroughly for any embassy interviews or biometrics appointments. 98% visa success rate.</p><div class="ps-docs"><span class="ps-doc">Visa Application</span><span class="ps-doc">Financial Documents</span><span class="ps-doc">Interview Coaching</span></div></div></div>
+    <div class="ps reveal"><div class="ps-circ">06</div><div class="ps-body"><div class="ps-when">Before Departure</div><div class="ps-title">Pre-Departure Briefing & Ongoing Support</div><p class="ps-desc">Comprehensive pre-departure orientation on accommodation, banking, transport, and cultural adaptation. We remain available after you land — always just a WhatsApp message away.</p></div></div>
+  </div>
+</section>
+
+<!-- ════════════ TESTIMONIALS ════════════ -->
+<section id="testimonials">
+  <div class="section-head">
+    <div><div class="eyebrow">Success Stories</div><h2>Real Students,<br>Real Results</h2></div>
+    <p class="sub">Hear from the students who trusted GES with their international education journey — and made it to their dream universities.</p>
+  </div>
+  <div class="test-grid">
+    <div class="test-card reveal"><div class="t-quote">"</div><div class="t-stars">★★★★★</div><p class="t-text">GES made my dream of studying in the UK a reality. From choosing the right university to getting my visa approved, they guided me through every single step. The SOP they helped me write was exceptional — I got my first-choice offer!</p><div class="t-author"><div class="t-av">P</div><div><div class="t-name">Priya Sharma</div><div class="t-info">MSc Finance</div><div class="t-badge">🇬🇧 University of Edinburgh</div></div></div></div>
+    <div class="test-card reveal reveal-d1"><div class="t-quote">"</div><div class="t-stars">★★★★★</div><p class="t-text">I was overwhelmed by the US application process. The GES team simplified everything — SOPs, financial documents, visa prep. I got into my top-choice school and received a partial scholarship. Couldn't be more grateful!</p><div class="t-author"><div class="t-av">R</div><div><div class="t-name">Rahul Menon</div><div class="t-info">MBA</div><div class="t-badge">🇺🇸 University of Illinois</div></div></div></div>
+    <div class="test-card reveal reveal-d2"><div class="t-quote">"</div><div class="t-stars">★★★★★</div><p class="t-text">The loan guidance and forex support from GES was incredible. They helped me find accommodation in Melbourne and briefed me on Australian culture. Truly end-to-end service you can trust completely.</p><div class="t-author"><div class="t-av">A</div><div><div class="t-name">Aisha Tan</div><div class="t-info">BE Mechanical Engineering</div><div class="t-badge">🇦🇺 Monash University</div></div></div></div>
+    <div class="test-card reveal"><div class="t-quote">"</div><div class="t-stars">★★★★★</div><p class="t-text">From my first consultation to landing in Toronto, GES was with me every step of the way. Their knowledge of the Canadian study permit is exceptional — my visa was approved in just 6 weeks!</p><div class="t-author"><div class="t-av">K</div><div><div class="t-name">Kevin Lim</div><div class="t-info">MA International Relations</div><div class="t-badge">🇨🇦 University of Toronto</div></div></div></div>
+    <div class="test-card reveal reveal-d1"><div class="t-quote">"</div><div class="t-stars">★★★★★</div><p class="t-text">GES helped me navigate the complex German application — from blocked account setup to apostille documents. I got accepted to TU Munich and am now living my dream. They made the impossible feel possible!</p><div class="t-author"><div class="t-av">S</div><div><div class="t-name">Surya Krishnan</div><div class="t-info">MSc Data Science</div><div class="t-badge">🇩🇪 TU Munich, Germany</div></div></div></div>
+    <div class="test-card reveal reveal-d2"><div class="t-quote">"</div><div class="t-stars">★★★★★</div><p class="t-text">As a career changer, GES identified the perfect MSc and crafted a narrative in my SOP that got me into Imperial. My visa was approved on first attempt. I can't recommend them highly enough.</p><div class="t-author"><div class="t-av">N</div><div><div class="t-name">Natasha Wong</div><div class="t-info">MSc Management</div><div class="t-badge">🇬🇧 Imperial College London</div></div></div></div>
+  </div>
+</section>
+
+<!-- ════════════ FAQ ════════════ -->
+<section id="faq">
+  <div class="section-head">
+    <div><div class="eyebrow">FAQ</div><h2>Frequently Asked<br>Questions</h2></div>
+    <p class="sub">Can't find your answer? <a href="#contact" style="color:var(--gold);font-weight:700;">Contact us directly</a> — we respond within 24 hours.</p>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How much does your consultancy service cost? <span class="faq-tog">+</span></button><div class="faq-a">Our initial consultation is completely free. Service fees vary by scope — we offer transparent tiered packages from university shortlisting only to our full end-to-end service. We discuss all costs clearly before you commit to anything.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can you help if I have a low GPA? <span class="faq-tog">+</span></button><div class="faq-a">Absolutely. GPA is just one part of your profile. We help present your strengths — work experience, skills, personal statement — in the most compelling way. Many non-traditional profile students have been admitted to top universities through our guidance.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What is your visa success rate? <span class="faq-tog">+</span></button><div class="faq-a">Our visa success rate is 98% across all destinations. We prepare documentation meticulously, review every document, and coach you for embassy interviews. The rare rejections occur due to changes in personal circumstances — not documentation errors.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do I need IELTS or TOEFL to study abroad? <span class="faq-tog">+</span></button><div class="faq-a">In most cases, yes — English proficiency tests are required for admission and visa purposes. However, some universities accept Duolingo, PTE, or previous English-medium education. We advise you on the best exam based on your destination and timeline.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How early should I start the process? <span class="faq-tog">+</span></button><div class="faq-a">We recommend starting at least 12 months before your intended intake for exam prep, document gathering, applications, and visa processing. We've also fast-tracked students with shorter timelines — contact us to assess your specific situation.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can you help with education loans? <span class="faq-tog">+</span></button><div class="faq-a">Yes. We provide comprehensive education loan guidance — assessing eligibility, identifying the right lender (secured and unsecured), and helping with documentation. We work with multiple banks to find you the most favourable loan terms.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What's the difference between Russell Group and Ivy League? <span class="faq-tog">+</span></button><div class="faq-a">Russell Group (UK) — 24 research-intensive UK universities receiving most of UK's research funding. Ivy League (USA) — 8 elite private US universities with extremely selective admissions. Both are globally respected, but serve different geographies and educational systems. We advise based on your career goals.</div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you provide support after I arrive abroad? <span class="faq-tog">+</span></button><div class="faq-a">Yes. Our support doesn't end at visa approval. We provide pre-departure briefing and remain available after you arrive for any challenges — visa extensions, changing universities, or navigating life in a new country. We're always a WhatsApp message away.</div></div>
+  </div>
+</section>
+
+<!-- ════════════ CTA ════════════ -->
+<div id="cta">
+  <div>
+    <h2>Start Your Global<br>Education Journey Today</h2>
+    <p>Book your free, no-obligation consultation with our expert advisors — or chat with us on WhatsApp right now.</p>
+  </div>
+  <div class="cta-acts">
+    <a href="#contact" class="btn-dark">📋 Book Free Consultation</a>
+    <a href="https://wa.me/6590640850?text=Hello%20GES!%20I'd%20like%20to%20know%20more%20about%20studying%20abroad." target="_blank" class="btn-green">💬 Chat on WhatsApp</a>
+    <a href="#brochures" class="btn-dl-outline" style="border-color:var(--navy);color:var(--navy);">📥 Download Brochure</a>
+  </div>
+</div>
+
+<!-- ════════════ CONTACT ════════════ -->
+<section id="contact">
+  <div class="eyebrow">Get In Touch</div>
+  <h2 class="light">Let's Plan Your<br>Future Together</h2>
+  <p class="sub light" style="margin-bottom:0;">We respond within 24 hours on all working days — or reach us instantly on WhatsApp.</p>
+  <div class="contact-wrap">
+    <div class="ci">
+      <h3>Contact Information</h3>
+      <div class="ci-item"><div class="ci-ico">✉</div><div><div class="ci-label">Email</div><div class="ci-val"><a href="mailto:chaudharyashish1121995@gmail.com">chaudharyashish1121995@gmail.com</a></div></div></div>
+      <div class="ci-item"><div class="ci-ico">📞</div><div><div class="ci-label">Phone / WhatsApp</div><div class="ci-val"><a href="tel:+6590640850">+65 9064 0850</a></div></div></div>
+      <div class="ci-item"><div class="ci-ico">📍</div><div><div class="ci-label">Office Address</div><div class="ci-val">Ang Mo Kio, Singapore 560542</div></div></div>
+      <div class="ci-item"><div class="ci-ico">🕐</div><div><div class="ci-label">Office Hours</div><div class="ci-val">Mon – Fri: 9:00 AM – 7:00 PM<br>Saturday: 10:00 AM – 4:00 PM</div></div></div>
+      <div class="ci-socials">
+        <h4>Connect With Us</h4>
+        <div class="soc-row">
+          <a href="https://wa.me/6590640850" target="_blank" class="soc-btn">💬 WhatsApp</a>
+          <a href="mailto:chaudharyashish1121995@gmail.com" class="soc-btn">✉ Email</a>
+          <a href="#brochures" class="soc-btn">📥 Brochures</a>
+        </div>
+      </div>
+    </div>
+    <div class="cf">
+      <h3>Send Us a Message</h3>
+      <div class="f2">
+        <div class="fg"><label>First Name</label><input type="text" placeholder="Your first name"></div>
+        <div class="fg"><label>Last Name</label><input type="text" placeholder="Your last name"></div>
+      </div>
+      <div class="f2">
+        <div class="fg"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+        <div class="fg"><label>Phone / WhatsApp</label><input type="tel" placeholder="+65 XXXX XXXX"></div>
+      </div>
+      <div class="f2">
+        <div class="fg"><label>Preferred Destination</label>
+          <select><option value="">Select destination</option><option>United Kingdom</option><option>United States</option><option>Canada</option><option>Australia</option><option>Germany</option><option>Netherlands</option><option>Other Europe</option><option>Not Sure Yet</option></select>
+        </div>
+        <div class="fg"><label>Study Level</label>
+          <select><option value="">Select level</option><option>Undergraduate (Bachelor's)</option><option>Postgraduate (Master's)</option><option>PhD / Doctorate</option><option>MBA</option><option>Foundation / Diploma</option></select>
+        </div>
+      </div>
+      <div class="f2">
+        <div class="fg"><label>Intended Intake</label>
+          <select><option value="">Select intake</option><option>2025 — September</option><option>2026 — January</option><option>2026 — September</option><option>2027 and beyond</option></select>
+        </div>
+        <div class="fg"><label>How Did You Hear About Us?</label>
+          <select><option value="">Select</option><option>Google Search</option><option>Friend / Family Referral</option><option>Social Media</option><option>WhatsApp</option><option>Other</option></select>
+        </div>
+      </div>
+      <div class="fg"><label>Your Message</label><textarea placeholder="Tell us about your education goals, academic background, any specific courses or universities you have in mind..."></textarea></div>
+      <button class="f-submit" onclick="handleSubmit()">Send Message — Get Free Consultation →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer>
+  <div class="foot-grid">
+    <div>
+      <div class="foot-logo">GES <span>Global Education Services</span></div>
+      <p class="foot-tag">Singapore's trusted overseas education consultancy providing end-to-end support for students aspiring to study at leading universities worldwide.</p>
+      <div class="foot-contact">📍 Ang Mo Kio, Singapore 560542<br>📞 <a href="tel:+6590640850">+65 9064 0850</a><br>✉ <a href="mailto:chaudharyashish1121995@gmail.com">chaudharyashish1121995@gmail.com</a></div>
+    </div>
+    <div>
+      <div class="foot-h">Destinations</div>
+      <div class="foot-links">
+        <a onclick="toggleCountry('uk')">🇬🇧 United Kingdom</a>
+        <a onclick="toggleCountry('usa')">🇺🇸 United States</a>
+        <a onclick="toggleCountry('canada')">🇨🇦 Canada</a>
+        <a onclick="toggleCountry('australia')">🇦🇺 Australia</a>
+        <a onclick="showUG('europe')">🌍 Europe</a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-h">Universities</div>
+      <div class="foot-links">
+        <a onclick="showUG('ivy')">🏛️ Ivy League</a>
+        <a onclick="showUG('russell')">🎓 Russell Group</a>
+        <a onclick="showUG('g8')">🦘 Group of Eight</a>
+        <a onclick="showUG('triple')">💼 Triple Crown B-Schools</a>
+        <a onclick="showUG('europe')">🌍 Public Europe</a>
+        <a onclick="showUG('u15')">🍁 U15 Canada</a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-h">Legal Processes</div>
+      <div class="foot-links">
+        <a onclick="showLegal('uk')">🇬🇧 UK Student Visa</a>
+        <a onclick="showLegal('usa')">🇺🇸 US F-1 Visa</a>
+        <a onclick="showLegal('canada')">🇨🇦 Canada Study Permit</a>
+        <a onclick="showLegal('australia')">🇦🇺 Australia Visa 500</a>
+        <a onclick="showLegal('germany')">🇩🇪 Germany Visa</a>
+      </div>
+    </div>
+    <div>
+      <div class="foot-h">Quick Links</div>
+      <div class="foot-links">
+        <a href="#services">Our Services</a>
+        <a href="#exams">Exam Guidance</a>
+        <a href="#scholarships">Scholarships</a>
+        <a href="#brochures">📥 Brochure Downloads</a>
+        <a href="#testimonials">Success Stories</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact Us</a>
+      </div>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-copy">© 2025 Global Education Services Pte. Ltd. All rights reserved · Registered in Singapore</div>
+    <div class="foot-flags">🇬🇧 🇺🇸 🇨🇦 🇦🇺 🇩🇪 🇳🇱 🇮🇪 🇫🇷</div>
+  </div>
+</footer>
+
+<!-- ════════════ FLOATING WA ════════════ -->
+<a href="https://wa.me/6590640850?text=Hello%20GES!%20I'd%20like%20to%20know%20more%20about%20studying%20abroad." target="_blank" class="wa-float">💬 <span>Chat on WhatsApp</span></a>
+
+<!-- ════════════ BROCHURE MODAL ════════════ -->
+<div class="modal-overlay" id="brochure-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeBrochureModal()">✕</button>
+    <h3>📥 Download Your Free Guide</h3>
+    <p id="modal-title-text">Enter your details below to receive your personalised GES brochure instantly via email.</p>
+    <div class="modal-form">
+      <input class="modal-input" type="text" id="modal-name" placeholder="Your full name *">
+      <input class="modal-input" type="email" id="modal-email" placeholder="Your email address *">
+      <input class="modal-input" type="tel" id="modal-phone" placeholder="WhatsApp number (optional)">
+      <button class="modal-submit" onclick="submitBrochure()">Send Me The Free Guide →</button>
+      <p class="modal-disclaimer">🔒 We respect your privacy. No spam — only your requested guide will be sent.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ JAVASCRIPT ════════════ -->
+<script>
+/* ── Tab helpers ── */
+function showUG(id, btn) {
+  document.querySelectorAll('#ug-'+['ivy','russell','g8','triple','europe','u15'].join(', #ug-')).forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.ug-tab').forEach(t => t.classList.remove('active'));
+  const panel = document.getElementById('ug-'+id);
+  if(panel) panel.classList.add('active');
+  if(btn) btn.classList.add('active');
+  else { document.querySelectorAll('.ug-tab').forEach(t => { if(t.textContent.toLowerCase().includes(id)) t.classList.add('active'); }); }
+  document.getElementById('uni-groups').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function showCourse(id, btn) {
+  ['all','stem','biz','health','arts'].forEach(k => { const el = document.getElementById('cp-'+k); if(el) el.classList.remove('active'); });
+  document.querySelectorAll('.course-tab').forEach(t => t.classList.remove('active'));
+  const panel = document.getElementById('cp-'+id);
+  if(panel) panel.classList.add('active');
+  if(btn) btn.classList.add('active');
+  document.getElementById('courses').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function showLegal(id, btn) {
+  ['uk','usa','canada','australia','germany'].forEach(k => { const el = document.getElementById('lp-'+k); if(el) el.classList.remove('active'); });
+  document.querySelectorAll('.legal-tab').forEach(t => t.classList.remove('active'));
+  const panel = document.getElementById('lp-'+id);
+  if(panel) panel.classList.add('active');
+  if(btn) btn.classList.add('active');
+  else { document.querySelectorAll('.legal-tab').forEach(t => { if(t.textContent.toLowerCase().includes(id.replace('usa','u.s').replace('canada','canada'))) t.classList.add('active'); }); }
+  document.getElementById('legal').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+/* ── Country detail ── */
+function toggleCountry(id) {
+  const all = ['uk','usa','canada','australia','europe'];
+  all.forEach(k => { if(k !== id) { const el = document.getElementById('cd-'+k); if(el) el.classList.remove('open'); }});
+  const panel = document.getElementById('cd-'+id);
+  if(panel) { panel.classList.toggle('open'); if(panel.classList.contains('open')) panel.scrollIntoView({behavior:'smooth',block:'nearest'}); }
+}
+function openCountry(id) {
+  document.getElementById('countries').scrollIntoView({behavior:'smooth',block:'start'});
+  setTimeout(() => { toggleCountry(id); }, 500);
+}
+function closeCountry(id) { const el = document.getElementById('cd-'+id); if(el) el.classList.remove('open'); }
+
+/* ── FAQ ── */
+function toggleFaq(btn) {
+  const a = btn.nextElementSibling;
+  const wasOpen = btn.classList.contains('open');
+  document.querySelectorAll('.faq-q').forEach(q => { q.classList.remove('open'); q.nextElementSibling.classList.remove('open'); });
+  if(!wasOpen) { btn.classList.add('open'); a.classList.add('open'); }
+}
+
+/* ── Brochure modal ── */
+let currentBrochure = '';
+function openBrochureModal(title) {
+  currentBrochure = title;
+  document.getElementById('modal-title-text').textContent = 'Enter your details to receive "' + title + '" instantly via email.';
+  document.getElementById('brochure-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeBrochureModal() {
+  document.getElementById('brochure-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('brochure-modal').addEventListener('click', function(e) { if(e.target === this) closeBrochureModal(); });
+function submitBrochure() {
+  const name = document.getElementById('modal-name').value.trim();
+  const email = document.getElementById('modal-email').value.trim();
+  if(!name || !email) { alert('Please enter your name and email to continue.'); return; }
+  if(!email.includes('@')) { alert('Please enter a valid email address.'); return; }
+  closeBrochureModal();
+  setTimeout(() => {
+    alert('✅ Thank you, ' + name + '!\n\nYour "' + currentBrochure + '" has been sent to ' + email + '.\n\nA GES advisor will also follow up within 24 hours.\n\nYou can also reach us on WhatsApp: +65 9064 0850');
+    document.getElementById('modal-name').value = '';
+    document.getElementById('modal-email').value = '';
+    document.getElementById('modal-phone').value = '';
+  }, 300);
+}
+
+/* ── Contact form ── */
+function handleSubmit() {
+  const inputs = document.querySelectorAll('.cf input, .cf textarea');
+  let has = false;
+  inputs.forEach(i => { if(i.value.trim()) has = true; });
+  if(!has) { alert('Please fill in your details before submitting.'); return; }
+  alert('Thank you for reaching out! 🎓\nThe GES team will respond within 24 hours.\nYou can also WhatsApp us at +65 9064 0850 for a faster response.');
+  inputs.forEach(i => i.value = '');
+  document.querySelectorAll('.cf select').forEach(s => s.selectedIndex = 0);
+}
+
+/* ── Smooth scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if(t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
+
+/* ── Reveal on scroll ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in'); });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ── Nav shadow on scroll ── */
+window.addEventListener('scroll', () => {
+  document.querySelector('.main-nav').style.boxShadow = window.scrollY > 60 ? '0 4px 30px rgba(0,0,0,.4)' : 'none';
+});
+
+/* ── Close mega drop on outside click ── */
+document.addEventListener('click', e => {
+  if(!e.target.closest('.nav-item')) document.querySelectorAll('.mega-drop').forEach(d => d.style.opacity = '');
+});
+</script>
+</body>
+</html>
